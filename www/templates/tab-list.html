@@ -1,0 +1,12 @@
+<ion-view title="List">
+  <ion-content>
+    <div class="list list-inset">
+      <ion-item ng-repeat="element in allData track by element.id" type="item-icon-left" href="#/tab/list/{{element.id}}">
+      	<i class="icon" ng-class="{'ion-disc' : (element.type == 'poo'),'ion-document-text' : (element.type == 'note')}"></i>
+        {{element.date | date: medium}}
+        {{element.time}} {{element.noteContent | limitTo:10 }}
+        <span ng-show="element.blood > 0" class="badge badge-assertive">{{element.blood}}</span>
+      </ion-item>
+    </div>
+  </ion-content>
+</ion-view>

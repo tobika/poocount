@@ -1,0 +1,32 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view title="{{element.name}}">
+  <ion-content has-header="true" padding="true">
+  <div class="list card">
+
+  <div class="item item-icon-left">
+    <i class="icon" ng-class="{'ion-disc' : (element.type == 'poo'),'ion-document-text' : (element.type == 'note')}"></i>
+    <h2>{{element.date | date: medium}}
+        {{element.time}}</h2>
+    <p>Id: {{element.id}}</p>
+  </div>
+  <div class="item">
+    <p ng-if="(element.type == 'note')">{{element.noteContent}}</p>
+    <p ng-if="(element.type == 'poo')">Blood: {{element.blood}}</p>
+  </div>
+  
+  <a class="item item-icon-left assertive" ng-click="deleteElement()" href="#">
+    <i class="icon ion-trash-a"></i>
+    Delete
+  </a>
+
+</div>
+
+  
+
+  </ion-content>
+</ion-view>
