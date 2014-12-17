@@ -2,19 +2,19 @@
 <ion-content class="padding">
 
 	<div class="list list-inset">
-	  <div class="item item-input">
+	  <div class="item item-input-inset">
 	  	<span class="input-label">Date</span>
-	  	<input ng-if="!desktop" type="text" pick-a-date="date" pick-a-date-options="options" ng-model="element.date"/>
-	  	<input ng-if="desktop" type="text" ng-model="element.date"/>
+	  	<input class="inputdata" ng-if="!desktop" type="text" pick-a-date="date" pick-a-date-options="options" ng-model="element.date"/>
+	  	<input class="inputdata" ng-if="desktop" type="text" ng-model="element.date"/>
 	  	<button ng-click="today()" class="button button-outline button-dark">
 			  Today
 			</button>
 	  </div>
 	  
-	  <div class="item item-input">
+	  <div class="item item-input-inset">
 	  	<span class="input-label">Time</span>
-	    <input ng-if="!desktop" pick-a-time="time" pick-a-time-options="optionsTime" type="text" ng-model="element.time"/>
-	    <input ng-if="desktop" type="text" ng-model="element.time"/>
+	    <input class="inputdata" ng-if="!desktop" pick-a-time="time" pick-a-time-options="optionsTime" type="text" ng-model="element.time"/>
+	    <input class="inputdata" ng-if="desktop" type="text" ng-model="element.time"/>
 	    <button ng-click="now()" class="button button-outline button-dark">
 	    	Now
 			</button>
