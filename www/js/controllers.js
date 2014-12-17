@@ -2,7 +2,7 @@ angular.module('starter.controllers', [])
 
 .controller('AddCtrl', function($scope, Database, $ionicPlatform) {
 	$scope.element = { date : moment().format('DD/MM/YYYY'), time : moment().format('HH:mm') };
-	//$scope.$apply();
+	
 	$scope.add = function() {
 		var element = $scope.element;
 
@@ -56,11 +56,9 @@ angular.module('starter.controllers', [])
 	  return "moment(stringDate).format('DD/MM/YYYY')";
 	};
 
-	//console.log('gnaa');
 })
 
 .controller('StatsCtrl', function($scope, Database, $timeout) {
-  //$scope.allData = [];
 
   Database.all(function(allData) {
   	$timeout(function() {
@@ -71,22 +69,24 @@ angular.module('starter.controllers', [])
   	});
   });  
 
+  $scope.$on("$ionicView.enter", function( scopes, states ) {
+    Database.all(function(allData) {
+      $timeout(function() {
+        $scope.allData = allData;
+        console.log("Callback onDataReady");
+
+        calulateChartData(allData);
+      });
+    });  
+  });
+
   var calulateChartData =function(chartData) {
   	var finalData = [], bloodData = [];
 
-  	/*finalData = [
-                [Date.UTC(1970,  9, 27), 0   ]
-            ];*/
-
   	for (var i = 0, y = chartData.length; i < y; i++) {
-  		//console.log(i + " " + chartData[i].date);
-      //console.log(chartData[i].date);
   		chartData[i].date = new Date(chartData[i].date);
-      //console.log("Month: " + (chartData[i].date.getMonth()));
-      //console.log("Day: " + (chartData[i].date.getDate()));
   		var utcDate = Date.UTC(chartData[i].date.getFullYear(),(chartData[i].date.getMonth()),chartData[i].date.getDate());
 
-      //console.log(utcDate);
       if (chartData[i].type != 'poo') {
         continue;
       }	  		
@@ -95,7 +95,6 @@ angular.module('starter.controllers', [])
       addInArray(bloodData,utcDate,chartData[i].blood);
       
   	};
-    //console.log(JSON.stringify(finalData));
 
   	drawChart(finalData, bloodData);
   }
@@ -168,14 +167,21 @@ angular.module('starter.controllers', [])
 })
 
 .controller('ListCtrl', function($scope, Database, $timeout) {
-  //$scope.allData = [];
+  // Database.all(function(allData) {
+  //   $timeout(function() {
+  //     $scope.allData = allData;
+  //     console.log("Callback onDataReady");
+  //   });
+  // });  
 
-  Database.all(function(allData) {
+  $scope.$on("$ionicView.enter", function( scopes, states ) {
+    Database.all(function(allData) {
     $timeout(function() {
       $scope.allData = allData;
       console.log("Callback onDataReady");
     });
-  });  
+  }); 
+  });
 
 })
 
