@@ -3,3 +3,7 @@
 input {
 	width: 40% !important; 
 }
+
+.background, .background .pane, .background .item, .background .item-complex .item-content{
+    background-color: #f7f8fa;
+}

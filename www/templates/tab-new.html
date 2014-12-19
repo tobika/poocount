@@ -6,7 +6,7 @@
 	  	<span class="input-label">Date</span>
 	  	<input class="inputdata" ng-if="!desktop" type="text" pick-a-date="date" pick-a-date-options="options" ng-model="element.date"/>
 	  	<input class="inputdata" ng-if="desktop" type="text" ng-model="element.date"/>
-	  	<button ng-click="today()" class="button button-outline button-dark">
+	  	<button ng-click="today()" class="button button-outline">
 			  Today
 			</button>
 	  </div>
@@ -15,7 +15,7 @@
 	  	<span class="input-label">Time</span>
 	    <input class="inputdata" ng-if="!desktop" pick-a-time="time" pick-a-time-options="optionsTime" type="text" ng-model="element.time"/>
 	    <input class="inputdata" ng-if="desktop" type="text" ng-model="element.time"/>
-	    <button ng-click="now()" class="button button-outline button-dark">
+	    <button ng-click="now()" class="button button-outline">
 	    	Now
 			</button>
 	  </div>
@@ -41,7 +41,7 @@
 	</div>
 
 	<div class="list list-inset">
-	<button ng-click="add()" class="button button-block button-outline button-balanced">
+	<button ng-click="add()" class="button button-block button-outline button-positive">
 	  Add {{element.type}}
 	</button>
 	</div>
