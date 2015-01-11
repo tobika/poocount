@@ -6,7 +6,8 @@ angular.module('starter.controllers', [])
 	$scope.add = function() {
 		var element = $scope.element;
 
-		element.date = moment.utc(element.date + " " + element.time, "DD/MM/YYYY HH:mm").toDate();
+    // check if there is no timezone problem anymore, before it was moment.utc
+		element.date = moment(element.date + " " + element.time, "DD/MM/YYYY HH:mm").toDate();
 
 		console.log(element);
 		Database.add(element);
@@ -168,21 +169,19 @@ angular.module('starter.controllers', [])
 })
 
 .controller('ListCtrl', function($scope, Database, $timeout) {
-  // Database.all(function(allData) {
-  //   $timeout(function() {
-  //     $scope.allData = allData;
-  //     console.log("Callback onDataReady");
-  //   });
-  // });  
-
   $scope.$on("$ionicView.enter", function( scopes, states ) {
     Database.all(function(allData) {
-    $timeout(function() {
-      $scope.allData = allData;
-      console.log("Callback onDataReady");
-    });
-  }); 
+      $timeout(function() {
+        $scope.allData = allData;
+        console.log("Callback onDataReady");
+      });
+      $scope.limit = 5;
+    }); 
   });
+
+  $scope.increaseLimit = function() {
+    $scope.limit += 5;
+  };
 
 })
 
