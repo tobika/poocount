@@ -12,8 +12,18 @@ angular.module('starter.controllers', [])
 		console.log(element);
 		Database.add(element);
 		$scope.element = { date : moment($scope.element.date).format('DD/MM/YYYY'), time : $scope.element.time, type : $scope.element.type, blood : $scope.element.blood};
-	
-	};
+
+    if (window.plugins) {
+      window.plugins.toast.show('New entry added: ' + element.date.toString(), 'long', 'bottom', 
+        function(a){
+          console.log('toast success: ' + a);
+        }, 
+        function(b){
+          alert('toast error: ' + b);
+      });
+    }
+  };
+    
   
   $scope.desktop = !ionic.Platform.isWebView();//!$ionicPlatform.isWebView();
 	
@@ -175,7 +185,7 @@ angular.module('starter.controllers', [])
         $scope.allData = allData;
         console.log("Callback onDataReady");
       });
-      $scope.limit = 5;
+      $scope.limit = 10;
     }); 
   });
 
