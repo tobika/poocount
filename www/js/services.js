@@ -54,11 +54,11 @@ angular.module('starter.services', [])
       if (allData[i].id == dataId) {
         return i;
       }
-    };
+    }
 
     console.log("Index not found: " + dataId);
     return -1;
-  }
+  };
 
   return {
     all: function(cb) {
@@ -101,5 +101,5 @@ angular.module('starter.services', [])
         saveToLocalStorage();
       }
     }
-  }
+  };
 });

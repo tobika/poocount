@@ -30,7 +30,8 @@ angular.module('starter.controllers', [])
 	  onClose: function(e) {
 	    // do something when the picker closes   
 	  }
-	}
+	};
+
   $scope.today = function() {
     $scope.element.date = moment().format('DD/MM/YYYY');
   };
@@ -94,10 +95,10 @@ angular.module('starter.controllers', [])
       addInArray(finalData,utcDate,1);
       addInArray(bloodData,utcDate,chartData[i].blood);
       
-  	};
+  	}
 
   	drawChart(finalData, bloodData);
-  }
+  };
 
   var addInArray = function(pArray, utcDate, augmentValue) {
     var isNew = true;
@@ -106,7 +107,7 @@ angular.module('starter.controllers', [])
           isNew = false;
           break;
         }
-      };
+      }
 
       if (isNew) {
         pArray.push([utcDate,augmentValue]);
@@ -114,7 +115,7 @@ angular.module('starter.controllers', [])
       else {
         pArray[j][1] = pArray[j][1] + augmentValue;
       } 
-  }
+  };
 
   var drawChart = function(finalData, bloodData) {
   	new Highcharts.Chart({
@@ -162,7 +163,7 @@ angular.module('starter.controllers', [])
             color: '#FF0000'
         }]
     });
-  }
+  };
 
 })
 
@@ -191,11 +192,11 @@ angular.module('starter.controllers', [])
   $scope.deleteElement = function() {
   	Database.deleteElement($scope.element.id);
   	$ionicNavBarDelegate.back();
-  }
+  };
 })
 
 .controller('AccountCtrl', function($scope, Database) {
   $scope.deleteAll = function() {
     Database.deleteAll();
-  }
+  };
 });
