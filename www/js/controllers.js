@@ -195,12 +195,12 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('FriendDetailCtrl', function($scope, $stateParams, Database, $ionicNavBarDelegate) {
+.controller('FriendDetailCtrl', function($scope, $stateParams, Database, $ionicNavBarDelegate, $state) {
   $scope.element = Database.get($stateParams.friendId);
 
   $scope.deleteElement = function() {
   	Database.deleteElement($scope.element.id);
-  	$ionicNavBarDelegate.back();
+    $state.go('tab.list');
   };
 })
 
