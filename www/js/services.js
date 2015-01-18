@@ -9,7 +9,9 @@ angular.module('starter.services', [])
   // Some fake testing data
   var allData = [],
     onReady = null,
-    lastId = 0;
+    lastId = 0,
+    listDataChanged = true,
+    statsDataChanged = true;
 
   localforage.getItem('allData').then(function(value) {
     // The same code, but using ES6 Promises.
@@ -36,6 +38,7 @@ angular.module('starter.services', [])
     allData =  _.sortBy(allData, function(elm){ return elm.date; });
     localforage.setItem('allData', allData);
     localforage.setItem('lastId', lastId);
+    dataChanged();
   };
 
   var getNewId = function() {
@@ -59,6 +62,11 @@ angular.module('starter.services', [])
     console.log("Index not found: " + dataId);
     return -1;
   };
+
+  var dataChanged = function() {
+    listDataChanged = true;
+    statsDataChanged = true;
+  }
 
   return {
     all: function(cb) {
@@ -100,6 +108,18 @@ angular.module('starter.services', [])
         allData[index] = editEntry;
         saveToLocalStorage();
       }
+    },
+    hasListDataChanged: function() {
+      return listDataChanged;
+    },
+    hasStatsDataChanged: function() {
+      return statsDataChanged;
+    },
+    gotListData: function() {
+      listDataChanged = false;
+    },
+    gotStatsData: function() {
+      statsDataChanged = false;
     }
   };
 });

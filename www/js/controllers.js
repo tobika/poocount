@@ -71,25 +71,16 @@ angular.module('starter.controllers', [])
 })
 
 .controller('StatsCtrl', function($scope, Database, $timeout) {
-
-  Database.all(function(allData) {
-  	$timeout(function() {
-	  	$scope.allData = allData;
-	  	console.log("Callback onDataReady");
-
-	  	calulateChartData(allData);
-  	});
-  });  
-
   $scope.$on("$ionicView.enter", function( scopes, states ) {
-    Database.all(function(allData) {
-      $timeout(function() {
-        $scope.allData = allData;
-        console.log("Callback onDataReady");
-
-        calulateChartData(allData);
-      });
-    });  
+     if (Database.hasStatsDataChanged() === true) {
+      Database.all(function(allData) {
+        $timeout(function() {
+          $scope.allData = allData;
+          Database.gotStatsData();
+          calulateChartData(allData);
+        });
+      }); 
+    }
   });
 
   var calulateChartData =function(chartData) {
@@ -180,13 +171,16 @@ angular.module('starter.controllers', [])
 
 .controller('ListCtrl', function($scope, Database, $timeout) {
   $scope.$on("$ionicView.enter", function( scopes, states ) {
-    Database.all(function(allData) {
-      $timeout(function() {
-        $scope.allData = allData;
-        console.log("Callback onDataReady");
-      });
-      $scope.limit = 10;
-    }); 
+    if (Database.hasListDataChanged() === true) {
+      Database.all(function(allData) {
+        $timeout(function() {
+          $scope.allData = allData;
+          console.log("Callback onDataReady");
+          Database.gotListData();
+        });
+        $scope.limit = 10;
+      }); 
+    }
   });
 
   $scope.increaseLimit = function() {
