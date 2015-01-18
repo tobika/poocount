@@ -66,7 +66,7 @@ angular.module('starter.services', [])
   var dataChanged = function() {
     listDataChanged = true;
     statsDataChanged = true;
-  }
+  };
 
   return {
     all: function(cb) {

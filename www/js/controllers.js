@@ -170,21 +170,50 @@ angular.module('starter.controllers', [])
 })
 
 .controller('ListCtrl', function($scope, Database, $timeout) {
+  $scope.listData = [];
+  $scope.allData = [];
+
   $scope.$on("$ionicView.enter", function( scopes, states ) {
     if (Database.hasListDataChanged() === true) {
       Database.all(function(allData) {
-        $timeout(function() {
-          $scope.allData = allData;
+          $scope.listData = [];
+          $scope.allData = allData.slice().reverse();
           console.log("Callback onDataReady");
           Database.gotListData();
-        });
-        $scope.limit = 10;
+          $scope.noMoreItemsAvailable = false;
       }); 
     }
   });
 
-  $scope.increaseLimit = function() {
-    $scope.limit += 5;
+  $scope.noMoreItemsAvailable = false;
+
+  $scope.loadMore = function() {
+    console.log("Load more");
+    
+    if ($scope.allData.length > 0) {
+      console.log("Increase, elements left: " + $scope.allData.length);
+      $timeout(function() {
+        var newElements = 5;
+        if ($scope.allData.length < 5) {
+          newElements = $scope.allData.length;
+        }
+        console.log("New elements: " + newElements);
+        var tmp = $scope.allData.splice(0, newElements);
+        for (var i = 0; i < 5; i++) {
+          // check if element is undefined, happens because of strange splice error
+          if (tmp[i]) {
+            $scope.listData.push(tmp[i]);
+          }
+        }
+        $scope.$broadcast('scroll.infiniteScrollComplete');
+      });
+    }    
+    else {
+      $timeout(function() {
+        console.log("Nothing left!!!!");
+        $scope.noMoreItemsAvailable = true;
+      });  
+    }  
   };
 
 })

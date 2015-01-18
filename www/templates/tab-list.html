@@ -1,15 +1,20 @@
 <ion-view title="List">
   <ion-content>
     <div class="list list-inset">
-      <ion-item ng-repeat="element in allData.slice().reverse() | limitTo: limit track by element.id" type="item-icon-left" href="#/tab/list/{{element.id}}">
+      <ion-item ng-repeat="element in listData track by element.id" type="item-icon-left" href="#/tab/list/{{element.id}}">
       	<i class="icon" ng-class="{'ion-disc' : (element.type == 'poo'),'ion-document-text' : (element.type == 'note')}"></i>
         {{element.date | date: medium}}
         {{element.time}} {{element.noteContent | limitTo:10 }}
         <span ng-show="element.blood > 0" class="badge badge-assertive">{{element.blood}}</span>
       </ion-item>
-      <ion-item type="item-icon-left" ng-click="increaseLimit()">
+      <!-- <ion-item type="item-icon-left" ng-click="increaseLimit()">
         Next items
-      </ion-item>
+      </ion-item> -->
     </div>
+    <ion-infinite-scroll
+    on-infinite="loadMore()"
+    distance="2"
+    ng-if="!noMoreItemsAvailable">
+    </ion-infinite-scroll>
   </ion-content>
 </ion-view>
