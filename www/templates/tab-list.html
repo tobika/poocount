@@ -1,6 +1,6 @@
 <ion-view title="List">
   <ion-content>
-    <div class="list list-inset">
+    <div class="list">
       <ion-item ng-repeat="element in listData track by element.id" type="item-icon-left" href="#/tab/list/{{element.id}}">
       	<i class="icon" ng-class="{'ion-disc' : (element.type == 'poo'),'ion-document-text' : (element.type == 'note')}"></i>
         {{element.date | date: medium}}

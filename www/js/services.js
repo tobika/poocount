@@ -13,6 +13,11 @@ angular.module('starter.services', [])
     listDataChanged = true,
     statsDataChanged = true;
 
+  localforage.config({
+    driver: localforage.LOCALSTORAGE,
+    name: 'poocountStorage'
+});
+
   localforage.getItem('allData').then(function(value) {
     // The same code, but using ES6 Promises.
     if (value) {
