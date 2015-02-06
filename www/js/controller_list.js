@@ -10,6 +10,7 @@ poomodule.controller('ListCtrl', function($scope, Database, $timeout) {
           console.log("Callback onDataReady");
           Database.gotListData();
           $scope.noMoreItemsAvailable = false;
+          $scope.loadMore();
       }); 
     }
   });
