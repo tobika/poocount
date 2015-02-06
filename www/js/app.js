@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'angular-datepicker'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'angular-datepicker', 'pascalprecht.translate'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -98,5 +98,46 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/add');
 
+})
+
+.config(function ($translateProvider) {
+  $translateProvider.translations('en', {
+    add_ADD: 'Add',
+    add_DATE: 'Date',
+    add_TODAY: 'Today',
+    add_TIME: 'Time',
+    add_NOW: 'Now',
+    POO: 'Poo',
+    add_NOTE: 'Note',
+    add_BLOOD: 'Blood',
+    list_LIST: 'List',
+    stats_STATS: 'Statistics',
+    settings_SETTINGS: 'Settings',
+    settings_INFOCAREFUL: 'Developer settings (be careful):',
+    settings_DELETEALL: 'Delete all',
+    settings_LANGUAGE: 'Languages'
+  });
+
+  $translateProvider.translations('fr', {
+    add_ADD: 'Ajouter',
+    add_DATE: 'Date',
+    add_TODAY: 'Aujourd\'hui',
+    add_TIME: 'Heure',
+    add_NOW: 'Maintenant',
+    POO: 'Poo',
+    add_NOTE: 'Note',
+    add_BLOOD: 'Sang',
+    list_LIST: 'List',
+    stats_STATS: 'Statistique',
+    settings_SETTINGS: 'Reglages',
+    settings_INFOCAREFUL: 'Reglages developpeur (attention):',
+    settings_DELETEALL: 'Supprime tout',
+    settings_LANGUAGE: 'Langues'
+  });
+  
+  $translateProvider.fallbackLanguage('en');
+  //$translateProvider.preferredLanguage('en');
+  $translateProvider.determinePreferredLanguage();
+  //console.log($translateProvider.determinePreferredLanguage());
 });
 

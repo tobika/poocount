@@ -55,10 +55,4 @@ poomodule.controller('ListCtrl', function($scope, Database, $timeout) {
   	Database.deleteElement($scope.element.id);
     $state.go('tab.list');
   };
-})
-
-.controller('AccountCtrl', function($scope, Database) {
-  $scope.deleteAll = function() {
-    Database.deleteAll();
-  };
 });
