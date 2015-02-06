@@ -1,36 +1,36 @@
-<ion-view title="Add">
+<ion-view title="{{ 'add_ADD' | translate }}">
 <ion-content class="padding">
 
 	<div class="list list-inset">
 	  <div class="item item-input-inset">
-	  	<span class="input-label">Date</span>
+	  	<span class="input-label">{{ 'add_DATE' | translate }}</span>
 	  	<input class="inputdata" ng-if="!desktop" type="text" pick-a-date="date" pick-a-date-options="options" ng-model="element.date"/>
 	  	<input class="inputdata" ng-if="desktop" type="text" ng-model="element.date"/>
 	  	<button ng-click="today()" class="button button-outline">
-			  Today
+			  {{ 'add_TODAY' | translate }}
 			</button>
 	  </div>
 	  
 	  <div class="item item-input-inset">
-	  	<span class="input-label">Time</span>
+	  	<span class="input-label">{{ 'add_TIME' | translate }}</span>
 	    <input class="inputdata" ng-if="!desktop" pick-a-time="time" pick-a-time-options="optionsTime" type="text" ng-model="element.time"/>
 	    <input class="inputdata" ng-if="desktop" type="text" ng-model="element.time"/>
 	    <button ng-click="now()" class="button button-outline">
-	    	Now
+	    	{{ 'add_NOW' | translate }}
 			</button>
 	  </div>
 	</div>
 
 	<div ng-init="element.type = 'poo'" class="button-bar">
-	  <a class="button button-outline button-positive" ng-class="{active: (element.type == 'poo')}" ng-click="setType('poo')">Poo</a>
-	  <a class="button button-outline button-positive" ng-class="{active: (element.type == 'note')}" ng-click="setType('note')">Note</a>
+	  <a class="button button-outline button-positive" ng-class="{active: (element.type == 'poo')}" ng-click="setType('poo')">{{ 'POO' | translate }}</a>
+	  <a class="button button-outline button-positive" ng-class="{active: (element.type == 'note')}" ng-click="setType('note')">{{ 'add_NOTE' | translate }}</a>
 	</div>
 
 	<div ng-show="(element.type == 'poo')" class="list list-inset">
 		<div ng-init="element.blood = 0" class="button-bar">
-		  <a class="button button-outline button-assertive" ng-class="{active: (element.blood == 0)}" ng-click="setBlood(0)">Blood 0</a>
-		  <a class="button button-outline button-assertive" ng-class="{active: (element.blood == 1)}" ng-click="setBlood(1)">Blood +</a>
-		  <a class="button button-outline button-assertive" ng-class="{active: (element.blood == 2)}" ng-click="setBlood(2)">Blood ++</a>
+		  <a class="button button-outline button-assertive" ng-class="{active: (element.blood == 0)}" ng-click="setBlood(0)">{{ 'add_BLOOD' | translate }} 0</a>
+		  <a class="button button-outline button-assertive" ng-class="{active: (element.blood == 1)}" ng-click="setBlood(1)">{{ 'add_BLOOD' | translate }} +</a>
+		  <a class="button button-outline button-assertive" ng-class="{active: (element.blood == 2)}" ng-click="setBlood(2)">{{ 'add_BLOOD' | translate }} ++</a>
 		</div>
 	</div>
 
@@ -42,7 +42,7 @@
 
 	<div class="list list-inset">
 	<button ng-click="add()" class="button button-block button-outline button-positive">
-	  Add {{element.type}}
+	  {{ 'add_ADD' | translate }} {{element.type}}
 	</button>
 	</div>
 

@@ -1,9 +1,15 @@
-<ion-view title="Settings">
+<ion-view title="{{ 'settings_SETTINGS' | translate }}">
   <ion-content class="padding">
-  	<p>Developer settings (be careful):</p>
+  	<p>{{ 'settings_INFOCAREFUL' | translate }}</p>
     <button ng-click="deleteAll()" class="button">
       <i class="icon ion-trash-a"></i>
-	  Delete all
+	  {{ 'settings_DELETEALL' | translate }}
 	</button>
+
+	<p>{{ 'settings_LANGUAGE' | translate }}</p>
+	<div class="button-bar">
+	  <a class="button" ng-click="setLanguage('en')">EN</a>
+	  <a class="button" ng-click="setLanguage('fr')">FR</a>
+	</div>
   </ion-content>
 </ion-view>
