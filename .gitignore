@@ -6,3 +6,6 @@ platforms/
 plugins/
 engine/
 resources/
+playstore/
+*.sublime*
+*.keystore
