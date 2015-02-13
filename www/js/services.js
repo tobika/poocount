@@ -99,6 +99,7 @@ angular.module('starter.services', [])
     deleteAll: function() {
       console.log("Delete all");
       allData = [];
+      dataChanged();
       localforage.clear();
     },
     add: function(newEntry) {

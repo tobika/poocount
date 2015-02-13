@@ -1,6 +1,10 @@
 poomodule.controller('AccountCtrl', function($scope, Database, $translate, LanguageService) {
   $scope.deleteAll = function() {
-    Database.deleteAll();
+    var result = confirm('Attention: All your data will be deleted');
+
+    if (result ) {
+      Database.deleteAll();
+    }    
   };
 
   $scope.setLanguage = function(lang) {

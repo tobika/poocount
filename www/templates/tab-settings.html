@@ -8,8 +8,12 @@
 
 	<p>{{ 'settings_LANGUAGE' | translate }}</p>
 	<div class="button-bar">
-	  <a class="button" ng-click="setLanguage('en')">EN</a>
-	  <a class="button" ng-click="setLanguage('fr')">FR</a>
+	  <button class="button" ng-click="setLanguage('en')">EN</button>
+	  <button class="button" ng-click="setLanguage('fr')">FR</button>
+	  <button class="button" ng-click="setLanguage('de')">DE</button>
 	</div>
+	<p></p>
+	<button class="button" ng-click="setLanguage('')">Remove default language</button>
+
   </ion-content>
 </ion-view>
