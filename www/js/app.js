@@ -7,19 +7,58 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'angular-datepicker', 'pascalprecht.translate'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $translate, LanguageService) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     //console.log(ionic.Platform.isWebView());
+    console.log("Cordova ready");
 
     if ( navigator && navigator.splashscreen) {
       navigator.splashscreen.hide();
+      console.log("Hide splashscreen");
     }
 
-    if(window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+
+    LanguageService.initLanguage().then( function() {
+      console.log("language initialized");
+
+      var lang = LanguageService.getLanguage();
+      console.log("language: " + lang);
+      if (lang.length > 0) {
+        console.log("Set preset language");
+        $translate.use(lang)
+      }
+      else if (typeof navigator.globalization !== "undefined") {
+      console.log("Get globalization");
+      navigator.globalization.getLocaleName(
+        function (locale) {
+          console.log('locale: ' + locale.value + '\n');
+          lang = locale.value.split("-")[0];
+          $translate.use(lang).then(function(data) {
+              LanguageService.setLanguage(lang);
+              console.log("SUCCESS -> " + data);
+          }, function(error) {
+              console.log("ERROR -> " + error);
+          });
+        },
+        function () {
+          console.log('Error getting locale\n');
+        }
+      );
+
+      console.log("End globalization");
     }
+    else {
+      console.log("No globalization plugin");
+    }
+
+    });
+
+    /*if(window.cordova && window.cordova.plugins.Keyboard) {
+      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+    }*/
+
     if(window.StatusBar) {
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
@@ -133,6 +172,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     settings_INFOCAREFUL: 'Reglages developpeur (attention):',
     settings_DELETEALL: 'Supprime tout',
     settings_LANGUAGE: 'Langues'
+  });
+
+  $translateProvider.translations('de', {
+    add_ADD: 'Hinzufügen',
+    add_DATE: 'Datum',
+    add_TODAY: 'Heute',
+    add_TIME: 'Uhrzeit',
+    add_NOW: 'Jetzt',
+    POO: 'Poo',
+    add_NOTE: 'Notiz',
+    add_BLOOD: 'Blut',
+    list_LIST: 'Liste',
+    stats_STATS: 'Statistik',
+    settings_SETTINGS: 'Einstellungen',
+    settings_INFOCAREFUL: 'Entwickler Einstellungen (Achtung):',
+    settings_DELETEALL: 'Alle Daten löschen',
+    settings_LANGUAGE: 'Sprachen'
   });
   
   $translateProvider.fallbackLanguage('en');

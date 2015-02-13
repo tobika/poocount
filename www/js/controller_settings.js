@@ -1,4 +1,4 @@
-poomodule.controller('AccountCtrl', function($scope, Database, $translate) {
+poomodule.controller('AccountCtrl', function($scope, Database, $translate, LanguageService) {
   $scope.deleteAll = function() {
     Database.deleteAll();
   };
@@ -6,5 +6,6 @@ poomodule.controller('AccountCtrl', function($scope, Database, $translate) {
   $scope.setLanguage = function(lang) {
     console.log("Set language: " + lang);
     $translate.use(lang);
+    LanguageService.setLanguage(lang);
   };
 });
