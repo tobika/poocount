@@ -16,12 +16,12 @@
   </div>
   <div class="item">
     <p ng-if="(element.type == 'note')">{{element.noteContent}}</p>
-    <p ng-if="(element.type == 'poo')">Blood: {{element.blood}}</p>
+    <p ng-if="(element.type == 'poo')">{{ 'add_BLOOD' | translate }}: {{element.blood}}</p>
   </div>
   
   <a class="item item-icon-left assertive" ng-click="deleteElement()" href="#">
     <i class="icon ion-trash-a"></i>
-    Delete
+    {{ 'general_DELETE' | translate }}
   </a>
 
 </div>

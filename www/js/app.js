@@ -27,7 +27,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       console.log("language: " + lang);
       if (lang.length > 0) {
         console.log("Set preset language");
-        $translate.use(lang)
+        $translate.use(lang);
       }
       else if (typeof navigator.globalization !== "undefined") {
       console.log("Get globalization");
@@ -154,7 +154,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     settings_SETTINGS: 'Settings',
     settings_INFOCAREFUL: 'Developer settings (be careful):',
     settings_DELETEALL: 'Delete all',
-    settings_LANGUAGE: 'Languages'
+    settings_LANGUAGE: 'Languages',
+    settings_REMOVEDEFAULTLANGUAGE: 'Reset default language',
+    settings_CONFIRMDELETE: 'Attention: All your data will be deleted',
+    general_BACK: 'Back',
+    general_DELETE: 'Delete'
+    
   });
 
   $translateProvider.translations('fr', {
@@ -171,7 +176,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     settings_SETTINGS: 'Reglages',
     settings_INFOCAREFUL: 'Reglages developpeur (attention):',
     settings_DELETEALL: 'Supprime tout',
-    settings_LANGUAGE: 'Langues'
+    settings_LANGUAGE: 'Langues',
+    settings_REMOVEDEFAULTLANGUAGE: 'Supprime language par defaut',
+    settings_CONFIRMDELETE: 'Attention: All your data will be deleted',
+    general_BACK: 'Retour',
+    general_DELETE: 'Supprimer'
   });
 
   $translateProvider.translations('de', {
@@ -188,7 +197,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     settings_SETTINGS: 'Einstellungen',
     settings_INFOCAREFUL: 'Entwickler Einstellungen (Achtung):',
     settings_DELETEALL: 'Alle Daten löschen',
-    settings_LANGUAGE: 'Sprachen'
+    settings_LANGUAGE: 'Sprachen',
+    settings_REMOVEDEFAULTLANGUAGE: 'Standard Sprache zurücksetzen',
+    settings_CONFIRMDELETE: 'Attention: All your data will be deleted',
+    general_BACK: 'Zurück',
+    general_DELETE: 'Löschen'
   });
   
   $translateProvider.fallbackLanguage('en');
