@@ -1,4 +1,4 @@
-poomodule.controller('AccountCtrl', function($scope, Database, $translate, LanguageService) {
+poomodule.controller('AccountCtrl', function($scope, Database, $translate, LanguageService, BackupService) {
   $scope.deleteAll = function() {
     $scope.translatedText = $translate('settings_CONFIRMDELETE');
     console.log(JSON.stringify($scope.translatedText));
@@ -14,4 +14,9 @@ poomodule.controller('AccountCtrl', function($scope, Database, $translate, Langu
     $translate.use(lang);
     LanguageService.setLanguage(lang);
   };
+
+  $scope.exportBackup = function() {
+    BackupService.exportBackup();
+  };
+
 });

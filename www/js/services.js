@@ -1,4 +1,4 @@
-angular.module('starter.services', [])
+angular.module('starter.services', ['ngCordova'])
 
 /**
  * A simple example service that returns some data.
@@ -165,5 +165,49 @@ angular.module('starter.services', [])
       return deferred.promise;
     }
   };
-});
+})
 
+.factory('BackupService', function($q, $cordovaFile, Database) {
+  // Might use a resource here that returns a JSON array
+
+  // Some fake testing data
+  var backupFiles = [];
+
+  return {
+    getBackupFiles: function() {
+
+    },
+    exportBackup: function() {
+
+      window.resolveLocalFileSystemURL(cordova.file.externalRootDirectory, function(dir) {
+        console.log("Export: goto sdcard",dir);
+        dir.getFile("PoocountBackup_" + moment(new Date).format("YYYYMMDD_hhmmss") + ".txt", {create:true}, function(file) {
+          console.log("create file", file);
+          
+          file.createWriter(function(fileWriter) {
+    
+            // use to append
+            //fileWriter.seek(fileWriter.length);
+
+            Database.all(function(allData) {
+
+              var exportObject = {};
+              exportObject.poocountDBVersion = 0;
+              exportObject.data = allData;
+
+              var blob = new Blob([JSON.stringify(exportObject)], {type:'text/plain'});
+              fileWriter.write(blob);
+              console.log("File wrote");
+            }); 
+
+          }, function(error) {
+            console.log("Error: " + JSON.stringify(error));
+          });
+
+        });
+      });
+
+
+    }
+  };
+});
