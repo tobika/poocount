@@ -177,30 +177,33 @@ angular.module('starter.services', ['ngCordova'])
     getBackupFiles: function() {
       var deferred = $q.defer();
 
-      window.resolveLocalFileSystemURL(cordova.file.externalRootDirectory, function(dir) {
-        console.log("Get filelist");
-        var dirReader = dir.createReader();
+      if (cordova && cordova.file) {
+        window.resolveLocalFileSystemURL(cordova.file.externalRootDirectory, function(dir) {
+          console.log("Get filelist");
+          var dirReader = dir.createReader();
 
-        dirReader.readEntries (function(results) {
-          backupFiles = [];
+          dirReader.readEntries (function(results) {
+            backupFiles = [];
 
-          //console.log(JSON.stringify(results));
-          for (var i = 0; i < results.length; i++) {
-            if (results[i].name.indexOf("Poocount") >= 0) {
-              //console.log(results[i].name);
-              backupFiles.push({name: results[i].name, nativeURL: results[i].nativeURL})
+            //console.log(JSON.stringify(results));
+            for (var i = 0; i < results.length; i++) {
+              if (results[i].name.indexOf("Poocount") >= 0) {
+                //console.log(results[i].name);
+                backupFiles.push({name: results[i].name, nativeURL: results[i].nativeURL});
+              }
             }
-          };
 
-          deferred.resolve(backupFiles);
+            deferred.resolve(backupFiles);
+          });
+
         });
-
-      });
+      }
 
       return deferred.promise;
 
     },
     exportBackup: function() {
+      var deferred = $q.defer();
 
       window.resolveLocalFileSystemURL(cordova.file.externalRootDirectory, function(dir) {
         console.log("Export: goto sdcard",dir);
@@ -221,6 +224,7 @@ angular.module('starter.services', ['ngCordova'])
               var blob = new Blob([JSON.stringify(exportObject)], {type:'text/plain'});
               fileWriter.write(blob);
               console.log("File wrote");
+              deferred.resolve();
             }); 
 
           }, function(error) {
@@ -230,7 +234,7 @@ angular.module('starter.services', ['ngCordova'])
         });
       });
 
-
+      return deferred.promise;
     }
   };
 });

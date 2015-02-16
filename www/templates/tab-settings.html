@@ -1,23 +1,41 @@
 <ion-view title="{{ 'settings_SETTINGS' | translate }}">
-  <ion-content class="padding">
-  	<p>{{ 'settings_INFOCAREFUL' | translate }}</p>
-    <button ng-click="deleteAll()" class="button">
-      <i class="icon ion-trash-a"></i>
-	  {{ 'settings_DELETEALL' | translate }}
+<ion-content>
+<div class="list">
+
+	<div class="item item-divider">
+		{{ 'settings_LANGUAGE' | translate }}
+	</div>
+
+	<div class="button-bar">
+		<button class="button" ng-click="setLanguage('en')">EN</button>
+		<button class="button" ng-click="setLanguage('fr')">FR</button>
+		<button class="button" ng-click="setLanguage('de')">DE</button>
+	</div>
+
+	<button class="button button-full" ng-click="setLanguage('')">{{ 'settings_REMOVEDEFAULTLANGUAGE' | translate }}</button>
+
+
+	<button class="button button-full" ng-click="exportBackup()">Export backup file on SD-Card</button>
+
+	<div class="item item-divider item-text-wrap">
+		Poocount backups on the sdcard. Click to import.
+	</div>
+
+	<div ng-repeat="file in backupFiles" class="item">
+		{{ file.name }}
+	</div>
+
+	<div class="item item-divider">
+		{{ 'settings_INFOCAREFUL' | translate }}
+	</div>
+
+	<button ng-click="deleteAll()" class="button button-full">
+		<i class="icon ion-trash-a"></i>
+		{{ 'settings_DELETEALL' | translate }}
 	</button>
 
-	<p>{{ 'settings_LANGUAGE' | translate }}</p>
-	<div class="button-bar">
-	  <button class="button" ng-click="setLanguage('en')">EN</button>
-	  <button class="button" ng-click="setLanguage('fr')">FR</button>
-	  <button class="button" ng-click="setLanguage('de')">DE</button>
-	</div>
-	<p></p>
-	<button class="button" ng-click="setLanguage('')">{{ 'settings_REMOVEDEFAULTLANGUAGE' | translate }}</button>
+</div>
 
-	<button class="button" ng-click="exportBackup()">Export backup file on SD-Card</button>
+</ion-content>
 
-	<button class="button" ng-click="getBackupFiles()">getBackupFiles</button>
-
-  </ion-content>
 </ion-view>

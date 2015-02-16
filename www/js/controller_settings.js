@@ -16,13 +16,21 @@ poomodule.controller('AccountCtrl', function($scope, Database, $translate, Langu
   };
 
   $scope.exportBackup = function() {
-    BackupService.exportBackup();
+    BackupService.exportBackup().then(function() {
+      $scope.getBackupFiles();
+    });
+
   };
 
   $scope.getBackupFiles = function() {
     BackupService.getBackupFiles().then( function(results) {
       console.log(JSON.stringify(results));
+      $scope.backupFiles = results;
     });
   };
+
+  $scope.$on("$ionicView.enter", function( scopes, states ) {
+    $scope.getBackupFiles();
+  });
 
 });
