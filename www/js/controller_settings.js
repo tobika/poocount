@@ -19,4 +19,10 @@ poomodule.controller('AccountCtrl', function($scope, Database, $translate, Langu
     BackupService.exportBackup();
   };
 
+  $scope.getBackupFiles = function() {
+    BackupService.getBackupFiles().then( function(results) {
+      console.log(JSON.stringify(results));
+    });
+  };
+
 });

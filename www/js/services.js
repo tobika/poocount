@@ -175,13 +175,36 @@ angular.module('starter.services', ['ngCordova'])
 
   return {
     getBackupFiles: function() {
+      var deferred = $q.defer();
+
+      window.resolveLocalFileSystemURL(cordova.file.externalRootDirectory, function(dir) {
+        console.log("Get filelist");
+        var dirReader = dir.createReader();
+
+        dirReader.readEntries (function(results) {
+          backupFiles = [];
+
+          //console.log(JSON.stringify(results));
+          for (var i = 0; i < results.length; i++) {
+            if (results[i].name.indexOf("Poocount") >= 0) {
+              //console.log(results[i].name);
+              backupFiles.push({name: results[i].name, nativeURL: results[i].nativeURL})
+            }
+          };
+
+          deferred.resolve(backupFiles);
+        });
+
+      });
+
+      return deferred.promise;
 
     },
     exportBackup: function() {
 
       window.resolveLocalFileSystemURL(cordova.file.externalRootDirectory, function(dir) {
         console.log("Export: goto sdcard",dir);
-        dir.getFile("PoocountBackup_" + moment(new Date).format("YYYYMMDD_hhmmss") + ".txt", {create:true}, function(file) {
+        dir.getFile("PoocountBackup_" + moment(new Date()).format("YYYYMMDD_hhmmss") + ".txt", {create:true}, function(file) {
           console.log("create file", file);
           
           file.createWriter(function(fileWriter) {
