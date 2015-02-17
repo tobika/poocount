@@ -1,4 +1,4 @@
-poomodule.controller('AccountCtrl', function($scope, Database, $translate, LanguageService, BackupService) {
+poomodule.controller('AccountCtrl', function($scope, Database, $translate, LanguageService, BackupService, $ionicActionSheet) {
   $scope.deleteAll = function() {
     $scope.translatedText = $translate('settings_CONFIRMDELETE');
     console.log(JSON.stringify($scope.translatedText));
@@ -27,6 +27,28 @@ poomodule.controller('AccountCtrl', function($scope, Database, $translate, Langu
       console.log(JSON.stringify(results));
       $scope.backupFiles = results;
     });
+  };
+
+  $scope.showActionSheetImport = function(backupFileId) {
+
+   // Show the action sheet
+   var hideSheet = $ionicActionSheet.show({
+     buttons: [
+       { text: 'Import Backup ' }
+     ],
+     destructiveText: 'Delete',
+     titleText: $scope.backupFiles[backupFileId].name,
+     cancelText: 'Cancel',
+     buttonClicked: function(index) {
+       //alert($scope.backupFiles[backupFileId].nativeURL);
+       BackupService.importBackup($scope.backupFiles[backupFileId].nativeURL)
+       return true;
+     },
+     destructiveButtonClicked: function() {
+      alert("Develop delete function");
+     }
+   });
+
   };
 
   $scope.$on("$ionicView.enter", function( scopes, states ) {

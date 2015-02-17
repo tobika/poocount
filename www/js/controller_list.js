@@ -2,7 +2,7 @@ poomodule.controller('ListCtrl', function($scope, Database, $timeout) {
   $scope.listData = [];
   $scope.allData = [];
 
-  $scope.$on("$ionicView.enter", function( scopes, states ) {
+  $scope.$on("$ionicView.beforeEnter", function( scopes, states ) {
     if (Database.hasListDataChanged() === true) {
       Database.all(function(allData) {
           $scope.listData = [];

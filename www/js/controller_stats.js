@@ -1,5 +1,5 @@
 poomodule.controller('StatsCtrl', function($scope, Database, $timeout) {
-  $scope.$on("$ionicView.enter", function( scopes, states ) {
+  $scope.$on("$ionicView.beforeEnter", function( scopes, states ) {
      if (Database.hasStatsDataChanged() === true) {
       Database.all(function(allData) {
         $timeout(function() {

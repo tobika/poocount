@@ -3,20 +3,21 @@ angular.module('starter.services', ['ngCordova'])
 /**
  * A simple example service that returns some data.
  */
-.factory('Database', function() {
+ .factory('Database', function() {
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
   var allData = [],
-    onReady = null,
-    lastId = 0,
-    listDataChanged = true,
-    statsDataChanged = true;
+  onReady = null,
+  lastId = 0,
+  listDataChanged = true,
+  statsDataChanged = true,
+  that = this;
 
   localforage.config({
     driver: localforage.LOCALSTORAGE,
     name: 'poocountStorage'
-});
+  });
 
   localforage.getItem('allData').then(function(value) {
     // The same code, but using ES6 Promises.
@@ -126,6 +127,11 @@ angular.module('starter.services', ['ngCordova'])
     },
     gotStatsData: function() {
       statsDataChanged = false;
+    },
+    importData: function(importedData) {
+      allData = importedData;
+      //console.log("Data imported: " + JSON.stringify(importedData));
+      saveToLocalStorage();
     }
   };
 })
@@ -140,7 +146,7 @@ angular.module('starter.services', ['ngCordova'])
   localforage.config({
     driver: localforage.LOCALSTORAGE,
     name: 'poocountStorage'
-});
+  });
 
   return {
     getLanguage: function() {
@@ -211,7 +217,7 @@ angular.module('starter.services', ['ngCordova'])
           console.log("create file", file);
           
           file.createWriter(function(fileWriter) {
-    
+
             // use to append
             //fileWriter.seek(fileWriter.length);
 
@@ -233,6 +239,32 @@ angular.module('starter.services', ['ngCordova'])
 
         });
       });
+
+      return deferred.promise;
+    },
+    importBackup: function(fileURI) {
+      var deferred = $q.defer();
+
+      window.resolveLocalFileSystemURL(fileURI, function(fileEntry) {
+
+        fileEntry.file(function(file) {
+           var reader = new FileReader();
+
+          reader.onloadend = function(e) {
+            var importedData = JSON.parse(reader.result);
+            console.log("Filedata: " + JSON.stringify(importedData));
+
+            Database.importData(importedData.data);
+            deferred.resolve();
+          };
+          reader.onerror = function(e) {
+            console.log("Error: " + JSON.stringify(e));
+          }
+
+          reader.readAsText(file);
+        });
+
+    });
 
       return deferred.promise;
     }
