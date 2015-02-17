@@ -130,7 +130,8 @@ angular.module('starter.services', ['ngCordova'])
     },
     importData: function(importedData) {
       allData = importedData;
-      //console.log("Data imported: " + JSON.stringify(importedData));
+      lastId = _.sortBy(importedData, function(elm){ return elm.id; })[importedData.length-1].id;
+      console.log("lastId after import: " + lastId);
       saveToLocalStorage();
     }
   };
