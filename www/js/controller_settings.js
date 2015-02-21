@@ -2,7 +2,7 @@ poomodule.controller('AccountCtrl', function($scope, Database, $translate, Langu
   $scope.deleteAll = function() {
     $scope.translatedText = $translate('settings_CONFIRMDELETE');
     console.log(JSON.stringify($scope.translatedText));
-    var result = confirm($scope.translatedText);
+    var result = confirm("Attention: All your data will be deleted");
 
     if (result ) {
       Database.deleteAll();
@@ -40,12 +40,12 @@ poomodule.controller('AccountCtrl', function($scope, Database, $translate, Langu
      titleText: $scope.backupFiles[backupFileId].name,
      cancelText: 'Cancel',
      buttonClicked: function(index) {
-       //alert($scope.backupFiles[backupFileId].nativeURL);
-       BackupService.importBackup($scope.backupFiles[backupFileId].nativeURL)
+       BackupService.importBackup($scope.backupFiles[backupFileId].nativeURL);
        return true;
      },
      destructiveButtonClicked: function() {
-      alert("Develop delete function");
+       alert("Develop delete function. Please delete the file directly in your file-browser.");
+       return true;
      }
    });
 

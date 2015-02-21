@@ -260,7 +260,7 @@ angular.module('starter.services', ['ngCordova'])
           };
           reader.onerror = function(e) {
             console.log("Error: " + JSON.stringify(e));
-          }
+          };
 
           reader.readAsText(file);
         });

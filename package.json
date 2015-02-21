@@ -18,6 +18,8 @@
     "./engine/cordova-crosswalk-engine-c0.6.1",
     "org.apache.cordova.globalization",
     "https://github.com/apache/cordova-plugin-splashscreen.git",
-    "org.apache.cordova.device"
+    "org.apache.cordova.device",
+    "org.apache.cordova.file",
+    "./engine/cordova-crosswalk-engine-c0.6.2"
   ]
 }
