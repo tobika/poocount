@@ -1,0 +1,20 @@
+{
+  "add_ADD": "Add",
+  "add_DATE": "Date",
+  "add_TODAY": "Today",
+  "add_TIME": "Time",
+  "add_NOW": "Now",
+  "POO": "Poo",
+  "add_NOTE": "Note",
+  "add_BLOOD": "Blood",
+  "list_LIST": "List",
+  "stats_STATS": "Statistics",
+  "settings_SETTINGS": "Settings",
+  "settings_INFOCAREFUL": "Developer settings (be careful):",
+  "settings_DELETEALL": "Delete all",
+  "settings_LANGUAGE": "Languages",
+  "settings_REMOVEDEFAULTLANGUAGE": "Reset default language",
+  "settings_CONFIRMDELETE": "Attention: All your data will be deleted",
+  "general_BACK": "Back",
+  "general_DELETE": "Delete"
+}

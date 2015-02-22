@@ -1,12 +1,15 @@
 poomodule.controller('AccountCtrl', function($scope, Database, $translate, LanguageService, BackupService, $ionicActionSheet) {
   $scope.deleteAll = function() {
-    $scope.translatedText = $translate('settings_CONFIRMDELETE');
-    console.log(JSON.stringify($scope.translatedText));
-    var result = confirm("Attention: All your data will be deleted");
+    $translate('settings_CONFIRMDELETE').then(function successFn(translation) {
+        var result = confirm(translation);
 
-    if (result ) {
-      Database.deleteAll();
-    }    
+        if (result ) {
+            Database.deleteAll();
+        }
+    }, function errorFn(translationId) {
+      console.log('Translation failed:', translationId);
+    });
+
   };
 
   $scope.setLanguage = function(lang) {

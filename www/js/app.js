@@ -140,73 +140,23 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
 })
 
 .config(function ($translateProvider) {
-  $translateProvider.translations('en', {
-    add_ADD: 'Add',
-    add_DATE: 'Date',
-    add_TODAY: 'Today',
-    add_TIME: 'Time',
-    add_NOW: 'Now',
-    POO: 'Poo',
-    add_NOTE: 'Note',
-    add_BLOOD: 'Blood',
-    list_LIST: 'List',
-    stats_STATS: 'Statistics',
-    settings_SETTINGS: 'Settings',
-    settings_INFOCAREFUL: 'Developer settings (be careful):',
-    settings_DELETEALL: 'Delete all',
-    settings_LANGUAGE: 'Languages',
-    settings_REMOVEDEFAULTLANGUAGE: 'Reset default language',
-    settings_CONFIRMDELETE: 'Attention: All your data will be deleted',
-    general_BACK: 'Back',
-    general_DELETE: 'Delete'
-    
+
+  $translateProvider.useStaticFilesLoader({
+    prefix: 'locales/locale-',
+    suffix: '.json'
   });
 
-  $translateProvider.translations('fr', {
-    add_ADD: 'Ajouter',
-    add_DATE: 'Date',
-    add_TODAY: 'Aujourd\'hui',
-    add_TIME: 'Heure',
-    add_NOW: 'Maintenant',
-    POO: 'Poo',
-    add_NOTE: 'Note',
-    add_BLOOD: 'Sang',
-    list_LIST: 'List',
-    stats_STATS: 'Statistique',
-    settings_SETTINGS: 'Reglages',
-    settings_INFOCAREFUL: 'Reglages developpeur (attention):',
-    settings_DELETEALL: 'Supprime tout',
-    settings_LANGUAGE: 'Langues',
-    settings_REMOVEDEFAULTLANGUAGE: 'Supprime language par defaut',
-    settings_CONFIRMDELETE: 'Attention: All your data will be deleted',
-    general_BACK: 'Retour',
-    general_DELETE: 'Supprimer'
-  });
-
-  $translateProvider.translations('de', {
-    add_ADD: 'Hinzufügen',
-    add_DATE: 'Datum',
-    add_TODAY: 'Heute',
-    add_TIME: 'Uhrzeit',
-    add_NOW: 'Jetzt',
-    POO: 'Poo',
-    add_NOTE: 'Notiz',
-    add_BLOOD: 'Blut',
-    list_LIST: 'Liste',
-    stats_STATS: 'Statistik',
-    settings_SETTINGS: 'Einstellungen',
-    settings_INFOCAREFUL: 'Entwickler Einstellungen (Achtung):',
-    settings_DELETEALL: 'Alle Daten löschen',
-    settings_LANGUAGE: 'Sprachen',
-    settings_REMOVEDEFAULTLANGUAGE: 'Standard Sprache zurücksetzen',
-    settings_CONFIRMDELETE: 'Attention: All your data will be deleted',
-    general_BACK: 'Zurück',
-    general_DELETE: 'Löschen'
-  });
-  
   $translateProvider.fallbackLanguage('en');
-  //$translateProvider.preferredLanguage('en');
+
+  $translateProvider.registerAvailableLanguageKeys(['en', 'fr', 'de'], {
+    'en_US': 'en',
+    'en_UK': 'en',
+    'fr_FR': 'fr',
+    'de_DE': 'de',
+    'de_CH': 'de'
+  });
+
   $translateProvider.determinePreferredLanguage();
-  //console.log($translateProvider.determinePreferredLanguage());
+
 });
 

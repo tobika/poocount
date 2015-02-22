@@ -1,4 +1,4 @@
-var poomodule = angular.module('starter.controllers', []);
+var poomodule = angular.module('starter.controllers', ['pascalprecht.translate']);
 
 poomodule.controller('AddCtrl', function($scope, Database, $ionicPlatform) {
 	$scope.element = { date : moment().format('DD/MM/YYYY'), time : moment().format('HH:mm') };
