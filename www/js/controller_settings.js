@@ -30,7 +30,7 @@ poomodule.controller('AccountCtrl', function($scope, Database, $translate, Langu
       console.log(JSON.stringify(results));
       $scope.backupFiles = results;
     }, function() {
-      console.log("Error accessing filesystem.");
+      console.log("Backupfiles: Error accessing filesystem.");
     });
   };
 
@@ -39,7 +39,7 @@ poomodule.controller('AccountCtrl', function($scope, Database, $translate, Langu
    // Show the action sheet
    var hideSheet = $ionicActionSheet.show({
      buttons: [
-       { text: 'Import Backup ' }
+       { text: 'Import Backup' }
      ],
      destructiveText: 'Delete',
      titleText: $scope.backupFiles[backupFileId].name,

@@ -139,6 +139,11 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
 
 })
 
+.config(['$compileProvider', function ($compileProvider) {
+  // only use this in production build
+  $compileProvider.debugInfoEnabled(false);
+}])
+
 .config(function ($translateProvider) {
 
   $translateProvider.useStaticFilesLoader({

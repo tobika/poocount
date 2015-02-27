@@ -8,6 +8,7 @@
   "add_NOTE": "Note",
   "add_BLOOD": "Sang",
   "list_LIST": "List",
+  "list_DETAIL": "Detail",
   "stats_STATS": "Statistique",
   "settings_SETTINGS": "Reglages",
   "settings_INFOCAREFUL": "Reglages developpeur (attention):",
@@ -16,5 +17,7 @@
   "settings_REMOVEDEFAULTLANGUAGE": "Supprime language par defaut",
   "settings_CONFIRMDELETE": "Attention: Tout vos données von etre supprimer.",
   "general_BACK": "Retour",
-  "general_DELETE": "Supprimer"
+  "general_DELETE": "Supprimer",
+  "settings_EXPORT": "Export Poocount fichier backup sur la carte sd",
+  "settings_IMPORT": "Poocount fichier backup sur la carte sd. Cliquer pour importer"
 }

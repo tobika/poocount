@@ -1,4 +1,4 @@
-poomodule.controller('StatsCtrl', function($scope, Database, $timeout) {
+poomodule.controller('StatsCtrl', function($scope, Database, $timeout, $translate) {
   $scope.$on("$ionicView.beforeEnter", function( scopes, states ) {
      if (Database.hasStatsDataChanged() === true) {
       Database.all(function(allData) {
@@ -11,7 +11,7 @@ poomodule.controller('StatsCtrl', function($scope, Database, $timeout) {
     }
   });
 
-  var calulateChartData =function(chartData) {
+  var calulateChartData = function(chartData) {
   	var finalData = [], bloodData = [];
 
   	for (var i = 0, y = chartData.length; i < y; i++) {
@@ -27,7 +27,9 @@ poomodule.controller('StatsCtrl', function($scope, Database, $timeout) {
       
   	}
 
-  	drawChart(finalData, bloodData);
+    $translate(["POO","add_BLOOD"]).then(function successFn(translations) {
+      drawChart(finalData, bloodData, translations);
+    });  	
   };
 
   var addInArray = function(pArray, utcDate, augmentValue) {
@@ -47,7 +49,7 @@ poomodule.controller('StatsCtrl', function($scope, Database, $timeout) {
       } 
   };
 
-  var drawChart = function(finalData, bloodData) {
+  var drawChart = function(finalData, bloodData, translations) {
   	new Highcharts.Chart({
         chart: {
             renderTo : 'container',
@@ -78,14 +80,14 @@ poomodule.controller('StatsCtrl', function($scope, Database, $timeout) {
             enabled: true
         },
         series: [{
-            name: 'Poos',
+            name: translations.POO,
             // Define the data points. All series have a dummy year
             // of 1970/71 in order to be compared on the same x axis. Note
             // that in JavaScript, months start at 0 for January, 1 for February etc.
             data: finalData
         },
         {
-            name: 'Blood',
+            name: translations.add_BLOOD,
             // Define the data points. All series have a dummy year
             // of 1970/71 in order to be compared on the same x axis. Note
             // that in JavaScript, months start at 0 for January, 1 for February etc.

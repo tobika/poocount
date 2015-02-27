@@ -8,6 +8,7 @@
   "add_NOTE": "Note",
   "add_BLOOD": "Blood",
   "list_LIST": "List",
+  "list_DETAIL": "Detail",
   "stats_STATS": "Statistics",
   "settings_SETTINGS": "Settings",
   "settings_INFOCAREFUL": "Developer settings (be careful):",
@@ -16,5 +17,7 @@
   "settings_REMOVEDEFAULTLANGUAGE": "Reset default language",
   "settings_CONFIRMDELETE": "Attention: All your data will be deleted",
   "general_BACK": "Back",
-  "general_DELETE": "Delete"
+  "general_DELETE": "Delete",
+  "settings_EXPORT": "Export Poocount backupfiles to the sdcard",
+  "settings_IMPORT": "Poocount backups on the sdcard. Click to import"
 }
