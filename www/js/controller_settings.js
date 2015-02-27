@@ -29,6 +29,8 @@ poomodule.controller('AccountCtrl', function($scope, Database, $translate, Langu
     BackupService.getBackupFiles().then( function(results) {
       console.log(JSON.stringify(results));
       $scope.backupFiles = results;
+    }, function() {
+      console.log("Error accessing filesystem.");
     });
   };
 

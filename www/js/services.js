@@ -184,7 +184,7 @@ angular.module('starter.services', ['ngCordova'])
     getBackupFiles: function() {
       var deferred = $q.defer();
 
-      if (cordova && cordova.file) {
+      if (cordova && cordova.file && cordova.file.externalRootDirectory && window.resolveLocalFileSystemURL) {
         window.resolveLocalFileSystemURL(cordova.file.externalRootDirectory, function(dir) {
           console.log("Get filelist");
           var dirReader = dir.createReader();
@@ -204,6 +204,9 @@ angular.module('starter.services', ['ngCordova'])
           });
 
         });
+      }
+      else {
+        deferred.reject();
       }
 
       return deferred.promise;
