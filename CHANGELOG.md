@@ -2,11 +2,20 @@
 All notable changes to this project will be documented in this file.
 
 ## TODO:
-- Fix translate in JS functions
-- Delete backup file
+- Databackup in the appfolder, in case localstorage gets lost (crosswalk)
+
 
 ## [Unreleased][unreleased]
+
+
+
+## [0.2.2] - 2015-02-28
 ### Added
+- Remove angular debugging for production (more speed)
+- Delete backup file
+
+### Fixed
+- Fix translate in JS functions / missing strings
 
 
 ## [0.2.1] - 2015-02-21

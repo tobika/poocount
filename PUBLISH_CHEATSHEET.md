@@ -1,5 +1,7 @@
 Publish App
 
+BUILD_MULTIPLE_APKS=true ionic build --release android
+
 Sign APKs
 jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore tobika-release-key.keystore poocount-ARCH-release-VERSION.apk tobika
 
