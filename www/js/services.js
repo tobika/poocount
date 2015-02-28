@@ -239,6 +239,7 @@ angular.module('starter.services', ['ngCordova'])
 
           }, function(error) {
             console.log("Error: " + JSON.stringify(error));
+            deferred.reject(error);
           });
 
         });
@@ -263,12 +264,29 @@ angular.module('starter.services', ['ngCordova'])
           };
           reader.onerror = function(e) {
             console.log("Error: " + JSON.stringify(e));
+            deferred.reject(e);
           };
 
           reader.readAsText(file);
         });
 
     });
+
+      return deferred.promise;
+    },
+    deleteBackupFile: function(fileURI) {
+      var deferred = $q.defer();
+
+      window.resolveLocalFileSystemURL(fileURI, function(fileEntry) {
+
+        fileEntry.remove(function() {
+          console.log('File removed.');
+          deferred.resolve();
+        }, function(e) {
+          console.log("Error: " + JSON.stringify(e));
+          deferred.reject(e);
+        });
+      });
 
       return deferred.promise;
     }

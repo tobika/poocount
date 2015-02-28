@@ -49,7 +49,8 @@ poomodule.controller('AccountCtrl', function($scope, Database, $translate, Langu
        return true;
      },
      destructiveButtonClicked: function() {
-       alert("Develop delete function. Please delete the file directly in your file-browser.");
+       BackupService.deleteBackupFile($scope.backupFiles[backupFileId].nativeURL);
+       $scope.getBackupFiles();
        return true;
      }
    });
