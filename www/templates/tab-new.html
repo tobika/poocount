@@ -1,5 +1,5 @@
 <ion-view title="{{ 'add_ADD' | translate }}">
-<ion-content class="padding">
+<ion-content>
 
 	<div class="list list-inset">
 	  <div class="item item-input-inset">
@@ -13,7 +13,7 @@
 	  </div>
 	</div>
 
-	<div ng-init="element.type = 'poo'" class="button-bar">
+	<div ng-init="element.type = 'poo'" class="button-bar padding">
 	  <a class="button button-outline button-positive" ng-class="{active: (element.type == 'poo')}" ng-click="setType('poo')">{{ 'POO' | translate }}</a>
 	  <a class="button button-outline button-positive" ng-class="{active: (element.type == 'note')}" ng-click="setType('note')">{{ 'add_NOTE' | translate }}</a>
 	</div>
@@ -28,7 +28,7 @@
 
 	<div ng-show="(element.type == 'note')" class="list list-inset">
 		<label class="item item-input">
-	    <textarea ng-model="element.noteContent" placeholder="Notes"></textarea>
+	    <textarea class="notetext" ng-model="element.noteContent" placeholder="Notes"></textarea>
 	  </label>
 	</div>
 
