@@ -30,7 +30,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
         $translate.use(lang);
       }
       else if (typeof navigator.globalization !== "undefined") {
-      console.log("Get globalization");
+      console.log("Use globalization plugin");
       navigator.globalization.getLocaleName(
         function (locale) {
           console.log('locale: ' + locale.value + '\n');
@@ -47,7 +47,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
         }
       );
 
-      console.log("End globalization");
+      console.log("End use of globalization plugin");
     }
     else {
       console.log("No globalization plugin");
@@ -66,103 +66,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
-
-  //$ionicConfigProvider.tabs.position("bottom");
-  //ionicConfigProvider.views.maxCache(0);
-
-  // Ionic uses AngularUI Router which uses the concept of states
-  // Learn more here: https://github.com/angular-ui/ui-router
-  // Set up the various states which the app can be in.
-  // Each state's controller can be found in controllers.js
-  $stateProvider
-
-    // setup an abstract state for the tabs directive
-    .state('tab', {
-      url: "/tab",
-      abstract: true,
-      templateUrl: "templates/tabs.html"
-    })
-
-    // Each tab has its own nav history stack:
-
-    .state('tab.add', {
-      url: '/add',
-      views: {
-        'tab-add': {
-          templateUrl: 'templates/tab-new.html',
-          controller: 'AddCtrl'
-        }
-      }
-    })
-
-    .state('tab.stats', {
-      url: '/stats',
-      views: {
-        'tab-stats': {
-          templateUrl: 'templates/tab-stats.html',
-          controller: 'StatsCtrl'
-        }
-      }
-    })
-    .state('tab.list', {
-      url: '/list',
-      views: {
-        'tab-list': {
-          templateUrl: 'templates/tab-list.html',
-          controller: 'ListCtrl'
-        }
-      }
-    })    
-    .state('tab.list-detail', {
-      url: '/list/:friendId',
-      views: {
-        'tab-list': {
-          templateUrl: 'templates/list-detail.html',
-          controller: 'FriendDetailCtrl'
-        }
-      }
-    })
-
-    .state('tab.account', {
-      url: '/account',
-      views: {
-        'tab-account': {
-          templateUrl: 'templates/tab-settings.html',
-          controller: 'AccountCtrl'
-        }
-      }
-    });
-
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/add');
-
-})
-
 .config(['$compileProvider', function ($compileProvider) {
   // only use this in production build
   $compileProvider.debugInfoEnabled(false);
-}])
-
-.config(function ($translateProvider) {
-
-  $translateProvider.useStaticFilesLoader({
-    prefix: 'locales/locale-',
-    suffix: '.json'
-  });
-
-  $translateProvider.fallbackLanguage('en');
-
-  $translateProvider.registerAvailableLanguageKeys(['en', 'fr', 'de'], {
-    'en_US': 'en',
-    'en_UK': 'en',
-    'fr_FR': 'fr',
-    'de_DE': 'de',
-    'de_CH': 'de'
-  });
-
-  $translateProvider.determinePreferredLanguage();
-
-});
+}]);
 
 angular.module('starter.controllers', ['pascalprecht.translate']);
