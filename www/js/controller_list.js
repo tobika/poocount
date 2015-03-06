@@ -1,4 +1,4 @@
-poomodule.controller('ListCtrl', function($scope, Database, $timeout) {
+angular.module('starter.controllers').controller('ListCtrl', function($scope, Database, $timeout) {
   $scope.listData = [];
   $scope.allData = [];
 

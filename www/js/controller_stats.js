@@ -1,4 +1,4 @@
-poomodule.controller('StatsCtrl', function($scope, Database, $timeout, $translate) {
+angular.module('starter.controllers').controller('StatsCtrl', function($scope, Database, $timeout, $translate) {
   $scope.$on("$ionicView.beforeEnter", function( scopes, states ) {
      if (Database.hasStatsDataChanged() === true) {
       Database.all(function(allData) {

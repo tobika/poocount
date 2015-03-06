@@ -165,3 +165,4 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
 
 });
 
+angular.module('starter.controllers', ['pascalprecht.translate']);

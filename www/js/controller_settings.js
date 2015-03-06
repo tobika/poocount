@@ -1,4 +1,4 @@
-poomodule.controller('AccountCtrl', function($scope, Database, $translate, LanguageService, BackupService, $ionicActionSheet) {
+angular.module('starter.controllers').controller('AccountCtrl', function($scope, Database, $translate, LanguageService, BackupService, $ionicActionSheet) {
   $scope.deleteAll = function() {
     $translate('settings_CONFIRMDELETE').then(function successFn(translation) {
         var result = confirm(translation);
