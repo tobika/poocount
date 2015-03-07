@@ -55,16 +55,43 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
         }
       }
     })
-
-    .state('tab.account', {
-      url: '/account',
+    .state('tab.settings', {
+      url: '/settings',
       views: {
-        'tab-account': {
+        'tab-settings': {
           templateUrl: 'templates/tab-settings.html',
-          controller: 'AccountCtrl'
+          controller: 'SettingsCtrl'
+        }
+      }
+    })
+    .state('tab.settings-languages', {
+      url: '/settings/languages',
+      views: {
+        'tab-settings': {
+          templateUrl: 'templates/settings-languages.html',
+          controller: 'SettingsLanguagesCtrl'
+        }
+      }
+    })
+    .state('tab.settings-backup', {
+      url: '/settings/backup',
+      views: {
+        'tab-settings': {
+          templateUrl: 'templates/settings-backup.html',
+          controller: 'SettingsBackupCtrl'
+        }
+      }
+    })
+    .state('tab.settings-developer', {
+      url: '/settings/developer',
+      views: {
+        'tab-settings': {
+          templateUrl: 'templates/settings-developer.html',
+          controller: 'SettingsDeveloperCtrl'
         }
       }
     });
+
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/add');

@@ -1,44 +1,17 @@
 <ion-view title="{{ 'settings_SETTINGS' | translate }}">
-<ion-content>
-<div class="list">
+    <ion-content>
+        <div class="list">
+            <ion-item type="item-icon-left" href="#/tab/settings/backup">
+                {{ 'settings_IMPORTEXPORT' | translate }}
+            </ion-item>
+            <ion-item type="item-icon-left" href="#/tab/settings/languages">
+                {{ 'settings_LANGUAGE' | translate }}
+            </ion-item>
+            <ion-item type="item-icon-left" href="#/tab/settings/developer">
+                {{ 'settings_DEVELOPER' | translate }}
+            </ion-item>
 
-	<div class="item item-divider settings-subheader">
-		{{ 'settings_LANGUAGE' | translate }}
-	</div>
+        </div>
 
-	<div class="button-bar">
-		<button class="button" ng-click="setLanguage('en')">EN</button>
-		<button class="button" ng-click="setLanguage('fr')">FR</button>
-		<button class="button" ng-click="setLanguage('de')">DE</button>
-	</div>
-
-	<button class="button button-full" ng-click="setLanguage('')">{{ 'settings_REMOVEDEFAULTLANGUAGE' | translate }}</button>
-
-	<div class="item item-divider settings-subheader">
-		{{ 'settings_EXPORT' | translate }}
-	</div>
-
-	<button class="button button-full" ng-click="exportBackup()">Export backup file on SD-Card</button>
-
-	<div class="item item-divider item-text-wrap settings-subheader">
-		{{ 'settings_IMPORT' | translate }}
-	</div>
-
-	<div ng-repeat="file in backupFiles" class="item" ng-click="showActionSheetImport($index)">
-		{{ file.name }}
-	</div>
-
-	<div class="item item-divider settings-subheader">
-		{{ 'settings_INFOCAREFUL' | translate }}
-	</div>
-
-	<button ng-click="deleteAll()" class="button button-full">
-		<i class="icon ion-trash-a"></i>
-		{{ 'settings_DELETEALL' | translate }}
-	</button>
-
-</div>
-
-</ion-content>
-
+    </ion-content>
 </ion-view>

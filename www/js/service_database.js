@@ -128,6 +128,25 @@ angular.module('starter.services').factory('Database', function() {
       lastId = _.sortBy(importedData, function(elm){ return elm.id; })[importedData.length-1].id;
       console.log("lastId after import: " + lastId);
       saveToLocalStorage();
+    },
+    createDemoData: function() {
+      allData = [];
+      var currentDate = new Date();
+      var entrysPerDay = 2;
+
+      for(var i=0; i<30; i++) {
+        entrysPerDay = Math.random() * (7 - 1) + 1;
+
+        for(var j=0; j<entrysPerDay; j++) {
+          //console.log(new Date(currentDate));
+          //var newDate = moment(currentDate + " " + "08:30", "MM/DD/YYYY HH:mm").toDate();
+          allData.push({ id : getNewId(), date : moment(new Date(currentDate)).format('MM/DD/YYYY'), time : "08:30", type : "poo", blood : Math.floor(Math.random() * 2)});
+
+        }
+        currentDate.setDate(currentDate.getDate() - 1);
+      }
+
+      saveToLocalStorage();
     }
   };
 });
