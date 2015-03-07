@@ -1,10 +1,17 @@
 angular.module('starter.services').factory('SettingsService', function($q) {
   var language = "",
-  languageIsSet = false;
+  languageIsSet = false,
+  showDiarrhea = false;
 
   localforage.config({
     driver: localforage.LOCALSTORAGE,
     name: 'poocountStorage'
+  });
+
+  localforage.getItem('showDiarrhea').then(function(value) {
+    if (value) {
+      showDiarrhea = value;
+    }
   });
 
   return {
@@ -16,10 +23,11 @@ angular.module('starter.services').factory('SettingsService', function($q) {
       language = newLanguage;
     },
     initSettings: function () {
+      // could I move this just on top like with showDiarrhea?? to test
+
       var deferred = $q.defer();
 
       localforage.getItem('language').then(function(value) {
-        // The same code, but using ES6 Promises.
         if (value) {
           language = value;
           languageIsSet = true;
@@ -28,6 +36,14 @@ angular.module('starter.services').factory('SettingsService', function($q) {
       });
 
       return deferred.promise;
+    },
+    getShowDiarrhea: function () {
+      return showDiarrhea;
+    },
+    setShowDiarrhea: function(newShowDiarrhea) {
+      console.log("save" + newShowDiarrhea);
+      localforage.setItem('showDiarrhea', newShowDiarrhea);
+      showDiarrhea = newShowDiarrhea;
     }
   };
 });

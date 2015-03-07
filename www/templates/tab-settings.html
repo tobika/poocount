@@ -2,7 +2,7 @@
     <ion-content>
         <div class="list">
 
-            <ion-toggle ng-model="showDiarrhea" toggle-class="toggle-positive">Durchfall protokollieren</ion-toggle>
+            <ion-toggle ng-model="showDiarrhea" ng-change="showDiarrheaChange(showDiarrhea)" toggle-class="toggle-positive">Durchfall protokollieren {{showDiarrhea}}</ion-toggle>
 
             <ion-item type="item-icon-left" href="#/tab/settings/backup">
                 {{ 'settings_IMPORTEXPORT' | translate }}
