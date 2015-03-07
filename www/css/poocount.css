@@ -18,3 +18,7 @@ input.add {chi
 .notetext {
     min-height: 15vh;
 }
+
+.tabs-striped .tabs {
+    border-width: 0 !important;
+}
