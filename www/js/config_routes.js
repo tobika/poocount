@@ -1,6 +1,6 @@
 angular.module('starter').config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
-  //$ionicConfigProvider.tabs.position("bottom");
+  $ionicConfigProvider.tabs.position("top");
   //ionicConfigProvider.views.maxCache(0);
 
   // Ionic uses AngularUI Router which uses the concept of states

@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter.services', 'angular-datepicker', 'pascalprecht.translate'])
 
-.run(function($ionicPlatform, $translate, LanguageService) {
+.run(function($ionicPlatform, $translate, SettingsService) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -20,10 +20,10 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
     }
 
 
-    LanguageService.initLanguage().then( function() {
+    SettingsService.initSettings().then( function() {
       console.log("language initialized");
 
-      var lang = LanguageService.getLanguage();
+      var lang = SettingsService.getLanguage();
       console.log("language: " + lang);
       if (lang.length > 0) {
         console.log("Set preset language");
@@ -36,7 +36,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
           console.log('locale: ' + locale.value + '\n');
           lang = locale.value.split("-")[0];
           $translate.use(lang).then(function(data) {
-              LanguageService.setLanguage(lang);
+            SettingsService.setLanguage(lang);
               console.log("SUCCESS -> " + data);
           }, function(error) {
               console.log("ERROR -> " + error);

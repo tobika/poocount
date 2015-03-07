@@ -1,4 +1,4 @@
-angular.module('starter.services').factory('LanguageService', function($q) {
+angular.module('starter.services').factory('SettingsService', function($q) {
   var language = "",
   languageIsSet = false;
 
@@ -15,7 +15,7 @@ angular.module('starter.services').factory('LanguageService', function($q) {
       localforage.setItem('language', newLanguage);
       language = newLanguage;
     },
-    initLanguage: function () {
+    initSettings: function () {
       var deferred = $q.defer();
 
       localforage.getItem('language').then(function(value) {

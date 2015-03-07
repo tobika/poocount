@@ -1,7 +1,7 @@
-angular.module('starter.controllers').controller('SettingsLanguagesCtrl', function($scope, Database, $translate, LanguageService) {
+angular.module('starter.controllers').controller('SettingsLanguagesCtrl', function($scope, Database, $translate, SettingsService) {
   $scope.setLanguage = function(lang) {
     console.log("Set language: " + lang);
     $translate.use(lang);
-    LanguageService.setLanguage(lang);
+    SettingsService.setLanguage(lang);
   };
 });
