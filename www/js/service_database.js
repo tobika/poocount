@@ -135,7 +135,7 @@ angular.module('starter.services').factory('Database', function() {
       var entrysPerDay = 2;
 
       for(var i=0; i<30; i++) {
-        var newEntrysPerDay = Math.random() * (7 - 1) + 1
+        var newEntrysPerDay = Math.random() * (7 - 1) + 1;
         if (newEntrysPerDay > entrysPerDay) {
           entrysPerDay++;
         }
