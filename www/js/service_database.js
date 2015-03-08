@@ -135,12 +135,18 @@ angular.module('starter.services').factory('Database', function() {
       var entrysPerDay = 2;
 
       for(var i=0; i<30; i++) {
-        entrysPerDay = Math.random() * (7 - 1) + 1;
+        var newEntrysPerDay = Math.random() * (7 - 1) + 1
+        if (newEntrysPerDay > entrysPerDay) {
+          entrysPerDay++;
+        }
+        else if (newEntrysPerDay < entrysPerDay) {
+          entrysPerDay--;
+        }
 
         for(var j=0; j<entrysPerDay; j++) {
           //console.log(new Date(currentDate));
           //var newDate = moment(currentDate + " " + "08:30", "MM/DD/YYYY HH:mm").toDate();
-          allData.push({ id : getNewId(), date : moment(new Date(currentDate)).format('MM/DD/YYYY'), time : "08:30", type : "poo", blood : Math.floor(Math.random() * 2)});
+          allData.push({ id : getNewId(), date : moment(new Date(currentDate)).toDate(), time : "08:30", type : "poo", blood : Math.floor(Math.random() * 2), diarrhea : Math.floor(Math.random() * 2)});
 
         }
         currentDate.setDate(currentDate.getDate() - 1);

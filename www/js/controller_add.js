@@ -1,6 +1,10 @@
-angular.module('starter.controllers').controller('AddCtrl', function($scope, Database, $ionicPlatform) {
+angular.module('starter.controllers').controller('AddCtrl', function($scope, Database, SettingsService) {
 	$scope.element = { date : moment().format('DD/MM/YYYY'), time : moment().format('HH:mm') };
-	
+
+  $scope.$on("$ionicView.beforeEnter", function( scopes, states ) {
+    $scope.showDiarrhea = SettingsService.getShowDiarrhea();
+  });
+
 	$scope.add = function() {
 		var element = $scope.element;
 
@@ -10,6 +14,10 @@ angular.module('starter.controllers').controller('AddCtrl', function($scope, Dat
 		console.log(element);
 		Database.add(element);
 		$scope.element = { date : moment($scope.element.date).format('DD/MM/YYYY'), time : $scope.element.time, type : $scope.element.type, blood : $scope.element.blood};
+
+    if ($scope.showDiarrhea) {
+      $scope.element.diarrhea = element.diarrhea;
+    }
 
     if (window.plugins) {
       window.plugins.toast.show('New entry added: ' + element.date.toString(), 'long', 'bottom', 
@@ -21,8 +29,7 @@ angular.module('starter.controllers').controller('AddCtrl', function($scope, Dat
       });
     }
   };
-    
-  
+
   $scope.desktop = !ionic.Platform.isWebView();//!$ionicPlatform.isWebView();
 	
 	$scope.options = {
@@ -53,6 +60,9 @@ angular.module('starter.controllers').controller('AddCtrl', function($scope, Dat
 	};
   $scope.setBlood = function(blood) {
     $scope.element.blood = blood;
+  };
+  $scope.setDiarrhea = function(diarrhea) {
+    $scope.element.diarrhea = diarrhea;
   };
 	$scope.isSelected = function(type) {
 		console.log("isSelected");

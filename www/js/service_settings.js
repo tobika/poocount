@@ -41,7 +41,6 @@ angular.module('starter.services').factory('SettingsService', function($q) {
       return showDiarrhea;
     },
     setShowDiarrhea: function(newShowDiarrhea) {
-      console.log("save" + newShowDiarrhea);
       localforage.setItem('showDiarrhea', newShowDiarrhea);
       showDiarrhea = newShowDiarrhea;
     }

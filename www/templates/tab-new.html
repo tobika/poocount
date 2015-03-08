@@ -21,10 +21,16 @@
 	<div ng-show="(element.type == 'poo')" class="list list-inset">
 		<div ng-init="element.blood = 0" class="button-bar">
 		  <a class="button button-outline button-assertive" ng-class="{active: (element.blood == 0)}" ng-click="setBlood(0)">{{ 'add_BLOOD' | translate }} 0</a>
-		  <a class="button button-outline button-assertive" ng-class="{active: (element.blood == 1)}" ng-click="setBlood(1)">{{ 'add_BLOOD' | translate }} +</a>
-		  <a class="button button-outline button-assertive" ng-class="{active: (element.blood == 2)}" ng-click="setBlood(2)">{{ 'add_BLOOD' | translate }} ++</a>
+		  <a class="button button-outline button-assertive" ng-class="{active: (element.blood == 1)}" ng-click="setBlood(1)">+</a>
+		  <a class="button button-outline button-assertive" ng-class="{active: (element.blood == 2)}" ng-click="setBlood(2)">++</a>
 		</div>
-	</div>
+        <br>
+        <div ng-if="(showDiarrhea)" ng-init="element.diarrhea = 0" class="button-bar">
+            <a class="button button-outline button-energized" ng-class="{active: (element.diarrhea == 0)}" ng-click="setDiarrhea(0)">{{ 'add_DIARRHEA' | translate }} 0</a>
+            <a class="button button-outline button-energized" ng-class="{active: (element.diarrhea == 1)}" ng-click="setDiarrhea(1)">+</a>
+            <a class="button button-outline button-energized" ng-class="{active: (element.diarrhea == 2)}" ng-click="setDiarrhea(2)">++</a>
+        </div>
+    </div>
 
 	<div ng-show="(element.type == 'note')" class="list list-inset">
 		<label class="item item-input">
@@ -34,7 +40,7 @@
 
 	<div class="list list-inset">
 	<button ng-click="add()" class="button button-block button-outline button-positive">
-	  {{ 'add_ADD' | translate }} {{element.type}}
+	  {{ 'add_ADD' | translate }}
 	</button>
 	</div>
 

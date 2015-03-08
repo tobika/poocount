@@ -1,5 +1,7 @@
-angular.module('starter.controllers').controller('StatsCtrl', function($scope, Database, $timeout, $translate) {
+angular.module('starter.controllers').controller('StatsCtrl', function($scope, Database, $timeout, $translate, SettingsService) {
+
   $scope.$on("$ionicView.beforeEnter", function( scopes, states ) {
+     $scope.showDiarrhea = SettingsService.getShowDiarrhea();
      if (Database.hasStatsDataChanged() === true) {
       Database.all(function(allData) {
         $timeout(function() {
@@ -12,7 +14,7 @@ angular.module('starter.controllers').controller('StatsCtrl', function($scope, D
   });
 
   var calulateChartData = function(chartData) {
-  	var finalData = [], bloodData = [];
+  	var finalData = [], bloodData = [], diarrheaData = [];
 
   	for (var i = 0, y = chartData.length; i < y; i++) {
   		chartData[i].date = new Date(chartData[i].date);
@@ -24,11 +26,18 @@ angular.module('starter.controllers').controller('StatsCtrl', function($scope, D
 
       addInArray(finalData,utcDate,1);
       addInArray(bloodData,utcDate,chartData[i].blood);
+
+      if( $scope.showDiarrhea) {
+        if (typeof chartData[i].diarrhea == "undefined") {
+          chartData[i].diarrhea = 0;
+        }
+        addInArray(diarrheaData,utcDate,chartData[i].diarrhea);
+      }
       
   	}
 
-    $translate(["POO","add_BLOOD"]).then(function successFn(translations) {
-      drawChart(finalData, bloodData, translations);
+    $translate(["POO","add_BLOOD","add_DIARRHEA"]).then(function successFn(translations) {
+      drawChart(finalData, bloodData, diarrheaData, translations);
     });  	
   };
 
@@ -49,7 +58,7 @@ angular.module('starter.controllers').controller('StatsCtrl', function($scope, D
       } 
   };
 
-  var drawChart = function(finalData, bloodData, translations) {
+  var drawChart = function(finalData, bloodData, diarrheaData, translations) {
   	new Highcharts.Chart({
         chart: {
             renderTo : 'container',
@@ -93,7 +102,15 @@ angular.module('starter.controllers').controller('StatsCtrl', function($scope, D
             // of 1970/71 in order to be compared on the same x axis. Note
             // that in JavaScript, months start at 0 for January, 1 for February etc.
             data: bloodData,
-            color: '#FF0000'
+            color: '#EF473A'
+        },
+        {
+          name: translations.add_DIARRHEA,
+          // Define the data points. All series have a dummy year
+          // of 1970/71 in order to be compared on the same x axis. Note
+          // that in JavaScript, months start at 0 for January, 1 for February etc.
+          data: diarrheaData,
+          color: '#FFC900'
         }]
     });
   };
