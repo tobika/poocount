@@ -13,13 +13,16 @@
   "stats_STATS": "Statistik",
   "settings_SETTINGS": "Einstellungen",
   "settings_DELETEALL": "Alle Daten löschen",
-  "settings_LANGUAGE": "Sprachen",
+  "settings_LANGUAGE": "Sprache",
   "settings_IMPORTEXPORT": "Import/Export Backup",
-  "settings_DEVELOPER": "Entwickler",
+  "settings_DEVELOPER": "Erweiterte Einstellungen",
   "settings_REMOVEDEFAULTLANGUAGE": "Standard Sprache zurücksetzen",
   "settings_CONFIRMDELETE": "Attention: All your data will be deleted",
   "general_BACK": "Zurück",
   "general_DELETE": "Löschen",
   "settings_EXPORT": "Export Poocount Backupdatei auf die SD Karte",
-  "settings_IMPORT": "Poocount Backupdatei auf der SD Karte. Zum Importieren klicken"
+  "settings_IMPORT": "Poocount Backupdatei auf der SD Karte. Zum Importieren klicken",
+  "settings_DIARRHEATRACK": "Durchfall protokollieren",
+  "settings_HELP": "Hilfe",
+  "help_TEXT": "Falls Sie irgendwelche Fragen haben zögern Sie nicht mich zu kontaktieren. Wir werden Ihnen gerne weiterhelfen."
 }

@@ -13,13 +13,16 @@
   "stats_STATS": "Statistics",
   "settings_SETTINGS": "Settings",
   "settings_DELETEALL": "Delete all",
-  "settings_LANGUAGE": "Languages",
+  "settings_LANGUAGE": "Language",
   "settings_IMPORTEXPORT": "Import/Export Backup",
-  "settings_DEVELOPER": "Developer",
+  "settings_DEVELOPER": "Advanced Settings",
   "settings_REMOVEDEFAULTLANGUAGE": "Reset default language",
   "settings_CONFIRMDELETE": "Attention: All your data will be deleted",
   "general_BACK": "Back",
   "general_DELETE": "Delete",
   "settings_EXPORT": "Export Poocount backupfiles to the sdcard",
-  "settings_IMPORT": "Poocount backups on the sdcard. Click to import"
+  "settings_IMPORT": "Poocount backups on the sdcard. Click to import",
+  "settings_DIARRHEATRACK": "Track Diarrhea",
+  "settings_HELP": "Help",
+  "help_TEXT": "If you have any questions don't hesitate to contact me. We'll gladly help you."
 }

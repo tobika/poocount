@@ -90,6 +90,14 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
           controller: 'SettingsDeveloperCtrl'
         }
       }
+    })
+    .state('tab.settings-help', {
+      url: '/settings/help',
+      views: {
+        'tab-settings': {
+          templateUrl: 'templates/settings-help.html'
+        }
+      }
     });
 
 

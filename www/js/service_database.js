@@ -18,7 +18,7 @@ angular.module('starter.services').factory('Database', function() {
     // The same code, but using ES6 Promises.
     if (value) {
       allData = value;
-      console.log(JSON.stringify(value));
+      //console.log(JSON.stringify(value));
       if (onReady) {
         onReady(allData);
       }

@@ -17,6 +17,7 @@
   <div class="item item-text-wrap">
     <p ng-if="(element.type == 'note')">{{element.noteContent}}</p>
     <p ng-if="(element.type == 'poo')">{{ 'add_BLOOD' | translate }}: {{element.blood}}</p>
+    <p ng-if="(element.type == 'poo') && (element.diarrhea !== 'undefined')">{{ 'add_DIARRHEA' | translate }}: {{element.diarrhea}}</p>
   </div>
   
   <a class="item item-icon-left assertive" ng-click="deleteElement()" href="#">
