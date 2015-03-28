@@ -9,8 +9,10 @@ angular.module('starter.controllers').controller('ListCtrl', function($scope, Da
           $scope.allData = allData.slice().reverse();
           console.log("Callback onDataReady");
           Database.gotListData();
-          $scope.noMoreItemsAvailable = false;
-          $scope.loadMore();
+          //$scope.noMoreItemsAvailable = false;
+          //$scope.loadMore();
+
+          createDateGroups();
       }); 
     }
   });
@@ -44,6 +46,53 @@ angular.module('starter.controllers').controller('ListCtrl', function($scope, Da
         $scope.noMoreItemsAvailable = true;
       });  
     }  
+  };
+
+  var createDateGroups = function() {
+    $scope.groups = [];
+    var tmpGroups = [];
+
+    // new date object
+
+    for (var i = 0, y = $scope.allData.length; i < y; i++) {
+      addInArray(tmpGroups, $scope.allData[i].date.toString().substring(0,10), $scope.allData[i]);
+    }
+    $scope.groups = tmpGroups;
+  };
+
+  var addInArray = function(pArray, utcDate, element) {
+    var isNew = true;
+    for (var j = 0, k = pArray.length; j < k; j++) {
+      if (pArray[j].date === utcDate) {
+        isNew = false;
+        break;
+      }
+    }
+
+    if (isNew) {
+      pArray.push({
+        date: utcDate,
+        items: [element]
+      });
+    }
+    else {
+      pArray[j].items.push(element);
+    }
+  };
+
+  /*
+   * if given group is the selected group, deselect it
+   * else, select the given group
+   */
+  $scope.toggleGroup = function(group) {
+    if ($scope.isGroupShown(group)) {
+      $scope.shownGroup = null;
+    } else {
+      $scope.shownGroup = group;
+    }
+  };
+  $scope.isGroupShown = function(group) {
+    return $scope.shownGroup === group;
   };
 
 })

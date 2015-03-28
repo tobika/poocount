@@ -2,21 +2,40 @@
     <ion-nav-buttons side="primary">
     </ion-nav-buttons>
   <ion-content>
-    <div class="list">
-      <ion-item ng-repeat="element in listData track by element.id" type="item-icon-left" href="#/tab/list/{{element.id}}">
-      	<i class="icon" ng-class="{'ion-disc' : (element.type == 'poo'),'ion-document-text' : (element.type == 'note')}"></i>
-        {{element.date | date: medium}}
-        {{element.time}} {{element.noteContent}}
-        <span ng-show="element.blood > 0" class="badge badge-assertive">{{element.blood}}</span>
-      </ion-item>
-      <!-- <ion-item type="item-icon-left" ng-click="increaseLimit()">
-        Next items
-      </ion-item> -->
-    </div>
-    <ion-infinite-scroll
+    <!--<div class="list">-->
+      <!--<ion-item ng-repeat="element in listData track by element.id" type="item-icon-left" href="#/tab/list/{{element.id}}">-->
+      	<!--<i class="icon" ng-class="{'ion-disc' : (element.type == 'poo'),'ion-document-text' : (element.type == 'note')}"></i>-->
+        <!--{{element.date | date: medium}}-->
+        <!--{{element.time}} {{element.noteContent}}-->
+        <!--<span ng-show="element.blood > 0" class="badge badge-assertive">{{element.blood}}</span>-->
+      <!--</ion-item>-->
+      <!--&lt;!&ndash; <ion-item type="item-icon-left" ng-click="increaseLimit()">-->
+        <!--Next items-->
+      <!--</ion-item> &ndash;&gt;-->
+    <!--</div>-->
+    <ion-list>
+      <div ng-repeat="group in groups">
+        <ion-item class="item-stable"
+                  ng-click="toggleGroup(group)"
+                  ng-class="{active: isGroupShown(group)}">
+          <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+          &nbsp;
+          {{group.date}}
+        </ion-item>
+        <ion-item class="item-accordion"
+                  ng-repeat="element in group.items track by element.id"
+                  ng-show="isGroupShown(group)"
+                  type="item-icon-left" href="#/tab/list/{{element.id}}">
+          <i class="icon" ng-class="{'ion-disc' : (element.type == 'poo'),'ion-document-text' : (element.type == 'note')}"></i>
+          {{element.time}} {{element.noteContent}}
+          <span ng-show="element.blood > 0" class="badge badge-assertive">{{element.blood}}</span>
+        </ion-item>
+      </div>
+    </ion-list>
+    <!--<ion-infinite-scroll
     on-infinite="loadMore()"
     distance="5"
     ng-if="!noMoreItemsAvailable">
-    </ion-infinite-scroll>
+    </ion-infinite-scroll>-->
   </ion-content>
 </ion-view>
