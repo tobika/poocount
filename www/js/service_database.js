@@ -5,8 +5,7 @@ angular.module('starter.services').factory('Database', function() {
   var allData = [],
   onReady = null,
   lastId = 0,
-  listDataChanged = true,
-  statsDataChanged = true,
+  hasChangedData = {};
   that = this;
 
   localforage.config({
@@ -65,8 +64,10 @@ angular.module('starter.services').factory('Database', function() {
   };
 
   var dataChanged = function() {
-    listDataChanged = true;
-    statsDataChanged = true;
+
+    for (var param in hasChangedData) {
+      hasChangedData[param] = true;
+    }
   };
 
   return {
@@ -111,17 +112,14 @@ angular.module('starter.services').factory('Database', function() {
         saveToLocalStorage();
       }
     },
-    hasListDataChanged: function() {
-      return listDataChanged;
+    hasChanged: function(child) {
+      if (typeof hasChangedData[child] !== 'undefined') {
+        return hasChangedData[child];
+      }
+      return true;
     },
-    hasStatsDataChanged: function() {
-      return statsDataChanged;
-    },
-    gotListData: function() {
-      listDataChanged = false;
-    },
-    gotStatsData: function() {
-      statsDataChanged = false;
+    gotData: function(child) {
+      hasChangedData[child] = false;
     },
     importData: function(importedData) {
       allData = importedData;

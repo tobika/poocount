@@ -20,19 +20,21 @@ input.add {chi
 }
 
 .tabs-striped .tabs {
-    border-width: 0 !important;
+  border-width: 0 !important;
 }
 
-
-.list .item.item-accordion {
-  padding-top: 0;
-  padding-bottom: 0;
-  transition: 0.09s all linear;
+/*Icons*/
+.item .badge + .badge {
+  margin-right: 40px;
 }
-.list .item.item-accordion.ng-hide {
-  line-height: 0px;
+.item .badge + .badge + .badge{
+  margin-right: 56px;
 }
-.list .item.item-accordion.ng-hide-add,
-.list .item.item-accordion.ng-hide-remove {
-  display: block !important;
+.badge.badge-poo {
+  background-color: #387EF5;
+  color: #FFF;
+}
+.badge.badge-blood {
+  background-color: #EF473A;
+  color: #FFF;
 }

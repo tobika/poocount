@@ -42,7 +42,12 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
       views: {
         'tab-list': {
           templateUrl: 'templates/tab-list.html',
-          controller: 'ListCtrl'
+          controller: 'ListCtrl',
+          resolve: {
+            message: function (ListService) {
+              return ListService.initListService();
+            }
+          }
         }
       }
     })

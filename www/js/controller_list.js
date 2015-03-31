@@ -1,19 +1,15 @@
-angular.module('starter.controllers').controller('ListCtrl', function($scope, Database, $timeout) {
+angular.module('starter.controllers').controller('ListCtrl', function($scope, Database, $timeout, ListService) {
   $scope.listData = [];
   $scope.allData = [];
 
   $scope.$on("$ionicView.beforeEnter", function( scopes, states ) {
-    if (Database.hasListDataChanged() === true) {
-      Database.all(function(allData) {
-          $scope.listData = [];
-          $scope.allData = allData.slice().reverse();
-          console.log("Callback onDataReady");
-          Database.gotListData();
-          //$scope.noMoreItemsAvailable = false;
-          //$scope.loadMore();
+    if (Database.hasChanged('listController') === true) {
 
-          createDateGroups();
-      }); 
+      /*  $scope.noMoreItemsAvailable = false;
+          $scope.loadMore();*/
+
+      $scope.groups = ListService.getDayList();
+      Database.gotData('listController');
     }
   });
 
@@ -42,57 +38,10 @@ angular.module('starter.controllers').controller('ListCtrl', function($scope, Da
     }    
     else {
       $timeout(function() {
-        console.log("Nothing left!!!!");
+        console.log("Infinite Scroll End");
         $scope.noMoreItemsAvailable = true;
       });  
     }  
-  };
-
-  var createDateGroups = function() {
-    $scope.groups = [];
-    var tmpGroups = [];
-
-    // new date object
-
-    for (var i = 0, y = $scope.allData.length; i < y; i++) {
-      addInArray(tmpGroups, $scope.allData[i].date.toString().substring(0,10), $scope.allData[i]);
-    }
-    $scope.groups = tmpGroups;
-  };
-
-  var addInArray = function(pArray, utcDate, element) {
-    var isNew = true;
-    for (var j = 0, k = pArray.length; j < k; j++) {
-      if (pArray[j].date === utcDate) {
-        isNew = false;
-        break;
-      }
-    }
-
-    if (isNew) {
-      pArray.push({
-        date: utcDate,
-        items: [element]
-      });
-    }
-    else {
-      pArray[j].items.push(element);
-    }
-  };
-
-  /*
-   * if given group is the selected group, deselect it
-   * else, select the given group
-   */
-  $scope.toggleGroup = function(group) {
-    if ($scope.isGroupShown(group)) {
-      $scope.shownGroup = null;
-    } else {
-      $scope.shownGroup = group;
-    }
-  };
-  $scope.isGroupShown = function(group) {
-    return $scope.shownGroup === group;
   };
 
 })
