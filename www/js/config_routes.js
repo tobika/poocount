@@ -51,6 +51,15 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
         }
       }
     })
+    .state('tab.list-day', {
+      url: '/listday/:dayId',
+      views: {
+        'tab-list': {
+          templateUrl: 'templates/list-day.html',
+          controller: 'ListDetailDayCtrl'
+        }
+      }
+    })
     .state('tab.list-detail', {
       url: '/list/:friendId',
       views: {

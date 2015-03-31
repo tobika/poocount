@@ -8,12 +8,12 @@ angular.module('starter.controllers').controller('ListCtrl', function($scope, Da
       /*  $scope.noMoreItemsAvailable = false;
           $scope.loadMore();*/
 
-      $scope.groups = ListService.getDayList();
+      $scope.groups = ListService.getDaysList();
       Database.gotData('listController');
     }
   });
 
-  $scope.noMoreItemsAvailable = false;
+  /*$scope.noMoreItemsAvailable = false;
 
   $scope.loadMore = function() {
     console.log("Load more");
@@ -42,12 +42,23 @@ angular.module('starter.controllers').controller('ListCtrl', function($scope, Da
         $scope.noMoreItemsAvailable = true;
       });  
     }  
-  };
+  };*/
 
 })
 
+.controller('ListDetailDayCtrl', function($scope, $stateParams, ListService) {
+
+  $scope.$on("$ionicView.beforeEnter", function( scopes, states ) {
+    $scope.listData = ListService.getDayList($stateParams.dayId).items;
+    console.log($scope.listData);
+  });
+})
+
 .controller('FriendDetailCtrl', function($scope, $stateParams, Database, $ionicNavBarDelegate, $state) {
-  $scope.element = Database.get($stateParams.friendId);
+
+  $scope.$on("$ionicView.beforeEnter", function( scopes, states ) {
+    $scope.element = Database.get($stateParams.friendId);
+  });
 
   $scope.deleteElement = function() {
   	Database.deleteElement($scope.element.id);

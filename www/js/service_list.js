@@ -72,8 +72,11 @@ angular.module('starter.services').factory('ListService', function(Database, $q)
 
   return {
     initListService: initListService,
-    getDayList: function() {
+    getDaysList: function() {
       return that.groups;
+    },
+    getDayList: function(index) {
+      return that.groups[index];
     }
   };
 });
