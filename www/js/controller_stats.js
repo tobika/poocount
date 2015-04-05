@@ -2,11 +2,11 @@ angular.module('starter.controllers').controller('StatsCtrl', function($scope, D
 
   $scope.$on("$ionicView.beforeEnter", function( scopes, states ) {
      $scope.showDiarrhea = SettingsService.getShowDiarrhea();
-     if (Database.hasStatsDataChanged() === true) {
+     if (Database.hasChanged('stats') === true) {
       Database.all(function(allData) {
         $timeout(function() {
           $scope.allData = allData;
-          Database.gotStatsData();
+          Database.gotData('stats');
           calulateChartData(allData);
         });
       }); 
