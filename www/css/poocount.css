@@ -47,3 +47,8 @@ input.add {chi
 .bottomrecent {
   width: 100%;
 }
+.bottomrecent .item {
+  color: white;
+  background-color: #387EF5 !important;
+  border-style: none;
+}
