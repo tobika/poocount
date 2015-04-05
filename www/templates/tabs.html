@@ -23,5 +23,15 @@
     <ion-nav-view name="tab-settings"></ion-nav-view>
   </ion-tab>
 
-
 </ion-tabs>
+
+<ion-footer-bar>
+  <div class="bottomrecent">
+  <ion-item type="item-icon-left">
+    <i class="icon" ng-class="{'ion-disc' : (lastEntry.type == 'poo'),'ion-document-text' : (lastEntry.type == 'note')}"></i>
+    {{ lastEntry.date | date: medium}}
+    {{lastEntry.time}} {{lastEntry.noteContent}}
+    <span ng-show="lastEntry.blood > 0" class="badge badge-assertive">{{lastEntry.blood}}</span>
+  </ion-item>
+  </div>
+</ion-footer-bar>

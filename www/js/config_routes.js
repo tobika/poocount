@@ -13,7 +13,8 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
     .state('tab', {
       url: "/tab",
       abstract: true,
-      templateUrl: "templates/tabs.html"
+      templateUrl: "templates/tabs.html",
+      controller: 'TabCtrl'
     })
 
     // Each tab has its own nav history stack:
@@ -42,7 +43,21 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
       views: {
         'tab-list': {
           templateUrl: 'templates/tab-list.html',
-          controller: 'ListCtrl'
+          controller: 'ListCtrl',
+          resolve: {
+            message: function (ListService) {
+              return ListService.initListService();
+            }
+          }
+        }
+      }
+    })
+    .state('tab.list-day', {
+      url: '/listday/:dayId',
+      views: {
+        'tab-list': {
+          templateUrl: 'templates/list-day.html',
+          controller: 'ListDetailDayCtrl'
         }
       }
     })

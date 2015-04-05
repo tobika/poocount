@@ -4,9 +4,9 @@ angular.module('starter.services').factory('Database', function() {
   // Some fake testing data
   var allData = [],
   onReady = null,
+  onReadyLast = null,
   lastId = 0,
-  listDataChanged = true,
-  statsDataChanged = true,
+  hasChangedData = {};
   that = this;
 
   localforage.config({
@@ -21,6 +21,9 @@ angular.module('starter.services').factory('Database', function() {
       //console.log(JSON.stringify(value));
       if (onReady) {
         onReady(allData);
+      }
+      if (onReadyLast) {
+        onReadyLast(getLastEntry());
       }
     }
   });
@@ -40,6 +43,9 @@ angular.module('starter.services').factory('Database', function() {
     localforage.setItem('allData', allData);
     localforage.setItem('lastId', lastId);
     dataChanged();
+    if (onReadyLast) {
+      onReadyLast(getLastEntry());
+    }
   };
 
   var getNewId = function() {
@@ -65,8 +71,14 @@ angular.module('starter.services').factory('Database', function() {
   };
 
   var dataChanged = function() {
-    listDataChanged = true;
-    statsDataChanged = true;
+
+    for (var param in hasChangedData) {
+      hasChangedData[param] = true;
+    }
+  };
+
+  var getLastEntry = function() {
+    return allData[allData.length-1];
   };
 
   return {
@@ -74,6 +86,12 @@ angular.module('starter.services').factory('Database', function() {
       onReady = cb;
       if(onReady) {
         onReady(allData);
+      }
+    },
+    lastEntry: function(cb) {
+      onReadyLast = cb;
+      if(onReadyLast) {
+        onReadyLast(getLastEntry());
       }
     },
     get: function(dataId) {
@@ -111,17 +129,14 @@ angular.module('starter.services').factory('Database', function() {
         saveToLocalStorage();
       }
     },
-    hasListDataChanged: function() {
-      return listDataChanged;
+    hasChanged: function(child) {
+      if (typeof hasChangedData[child] !== 'undefined') {
+        return hasChangedData[child];
+      }
+      return true;
     },
-    hasStatsDataChanged: function() {
-      return statsDataChanged;
-    },
-    gotListData: function() {
-      listDataChanged = false;
-    },
-    gotStatsData: function() {
-      statsDataChanged = false;
+    gotData: function(child) {
+      hasChangedData[child] = false;
     },
     importData: function(importedData) {
       allData = importedData;

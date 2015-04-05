@@ -20,5 +20,35 @@ input.add {chi
 }
 
 .tabs-striped .tabs {
-    border-width: 0 !important;
+  border-width: 0 !important;
+}
+
+/*Icons*/
+.item .badge + .badge {
+  margin-right: 40px;
+}
+.item .badge + .badge + .badge{
+  margin-right: 56px;
+}
+.badge.badge-poo {
+  background-color: #387EF5;
+  color: #FFF;
+}
+.badge.badge-blood {
+  background-color: #EF473A;
+  color: #FFF;
+}
+
+.bar-footer {
+  height: 50px;
+  padding: 0;
+}
+
+.bottomrecent {
+  width: 100%;
+}
+.bottomrecent .item {
+  color: white;
+  background-color: #387EF5 !important;
+  border-style: none;
 }

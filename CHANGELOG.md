@@ -6,8 +6,19 @@ All notable changes to this project will be documented in this file.
 
 
 ## [Unreleased][unreleased]
+### Added
+- New Lists, entries grouped by days
 
+## [0.2.6] - 2015-03-13
+### Fixed
+- Translations
+- Finished diarrhea tracking
+- Settings help section
 
+## [0.2.5] - internal
+### Added
+- Diarrhea tracking
+- New design Add/Settings
 
 ## [0.2.2] - 2015-02-28
 ### Added
