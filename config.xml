@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.tobik.poocount" version="0.2.6" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>Poocount</name>
+<widget id="com.tobik.poocountdev" version="0.2.6" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>Poocount dev</name>
   <description>
         An app to count your poo. Why would you want to do this? For medical reasons.
     </description>
