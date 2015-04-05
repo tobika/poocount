@@ -4,6 +4,7 @@ angular.module('starter.services').factory('Database', function() {
   // Some fake testing data
   var allData = [],
   onReady = null,
+  onReadyLast = null,
   lastId = 0,
   hasChangedData = {};
   that = this;
@@ -20,6 +21,9 @@ angular.module('starter.services').factory('Database', function() {
       //console.log(JSON.stringify(value));
       if (onReady) {
         onReady(allData);
+      }
+      if (onReadyLast) {
+        onReadyLast(getLastEntry());
       }
     }
   });
@@ -39,6 +43,9 @@ angular.module('starter.services').factory('Database', function() {
     localforage.setItem('allData', allData);
     localforage.setItem('lastId', lastId);
     dataChanged();
+    if (onReadyLast) {
+      onReadyLast(getLastEntry());
+    }
   };
 
   var getNewId = function() {
@@ -70,11 +77,21 @@ angular.module('starter.services').factory('Database', function() {
     }
   };
 
+  var getLastEntry = function() {
+    return allData[allData.length-1];
+  };
+
   return {
     all: function(cb) {
       onReady = cb;
       if(onReady) {
         onReady(allData);
+      }
+    },
+    lastEntry: function(cb) {
+      onReadyLast = cb;
+      if(onReadyLast) {
+        onReadyLast(getLastEntry());
       }
     },
     get: function(dataId) {

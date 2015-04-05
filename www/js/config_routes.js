@@ -13,7 +13,8 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
     .state('tab', {
       url: "/tab",
       abstract: true,
-      templateUrl: "templates/tabs.html"
+      templateUrl: "templates/tabs.html",
+      controller: 'TabCtrl'
     })
 
     // Each tab has its own nav history stack:

@@ -38,3 +38,12 @@ input.add {chi
   background-color: #EF473A;
   color: #FFF;
 }
+
+.bar-footer {
+  height: 50px;
+  padding: 0;
+}
+
+.bottomrecent {
+  width: 100%;
+}
