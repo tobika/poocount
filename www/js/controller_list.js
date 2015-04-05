@@ -49,8 +49,8 @@ angular.module('starter.controllers').controller('ListCtrl', function($scope, Da
 .controller('ListDetailDayCtrl', function($scope, $stateParams, ListService) {
 
   $scope.$on("$ionicView.beforeEnter", function( scopes, states ) {
-    $scope.listData = ListService.getDayList($stateParams.dayId).items;
-    console.log($scope.listData);
+    $scope.listData = ListService.getDayList($stateParams.dayId);
+    console.log(JSON.stringify($scope.listData));
   });
 })
 
