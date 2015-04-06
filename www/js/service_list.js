@@ -31,14 +31,20 @@ angular.module('starter.services').factory('ListService', function(Database, $q)
       pArray.push({
         checkDate: checkDate,
         date: date,
-        poo: 1,
+        poo: element.type == 'poo' ? 1 : 0,
+        notes: element.type == 'note' ? 1 : 0,
         blood: element.blood,
         items: [element]
       });
     }
     else {
       pArray[j].blood += element.blood;
-      pArray[j].poo += 1;
+      if (element.type == 'poo') {
+        pArray[j].poo += 1;
+      }
+      else if (element.type == 'note') {
+        pArray[j].notes += 1;
+      }
       pArray[j].items.push(element);
     }
   };

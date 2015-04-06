@@ -16,8 +16,10 @@
 
       <ion-item collection-repeat="group in groups" type="item-icon-left" href="#/tab/listday/{{$index}}">
           {{group.date | date: medium}}
+
           <span class="badge badge-blood">{{group.blood}}</span>
-          <span class="badge badge-poo">{{group.poo}}</span>
+          <span class="badge badge-poo"><i class="icon ion-disc"></i>&nbsp;{{group.poo}}</span>
+          <span ng-if="group.notes > 0" class="badge badge-notes"><i class="icon ion-document-text"></i>&nbsp;{{group.notes}}</span>
 
         <!--</ion-item>
         <ion-item class="item-accordion"

@@ -28,7 +28,7 @@ input.add {chi
   margin-right: 40px;
 }
 .item .badge + .badge + .badge{
-  margin-right: 56px;
+  margin-right: 85px;
 }
 .badge.badge-poo {
   background-color: #387EF5;
@@ -37,6 +37,9 @@ input.add {chi
 .badge.badge-blood {
   background-color: #EF473A;
   color: #FFF;
+}
+.badge.badge-notes {
+  color: #5d5d5d;
 }
 
 .bar-footer {
