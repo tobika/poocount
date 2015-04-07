@@ -3,9 +3,11 @@ All notable changes to this project will be documented in this file.
 
 ## TODO:
 - Databackup in the appfolder, in case localstorage gets lost (crosswalk)
-- Day list, no date in every item, once per page
+
 
 ## [Unreleased][unreleased]
+
+## [0.2.7] - 2015-04-07
 ### Added
 - New Lists, entries grouped by days
 - Ionic v1.0r2
