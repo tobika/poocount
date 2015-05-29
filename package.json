@@ -22,17 +22,21 @@
     "shelljs": "^0.3.0"
   },
   "cordovaPlugins": [
-    "./engine/cordova-crosswalk-engine-c0.6.1",
-    "org.apache.cordova.globalization",
-    "org.apache.cordova.device",
+    "org.apache.cordova.splashscreen",
     "org.apache.cordova.file",
-    "./engine/cordova-crosswalk-engine-c0.6.2",
-    "org.apache.cordova.splashscreen"
+    "org.apache.cordova.globalization",
+    "org.apache.cordova.dialogs",
+    "org.apache.cordova.inappbrowser",
+    "cordova-plugin-whitelist",
+    "cordova-plugin-crosswalk-webview",
+    "com.ionic.keyboard"
   ],
   "cordovaPlatforms": [
+    "android",
     {
       "platform": "android",
-      "locator": "./engine/cordova-android-c0.6.1/"
+      "version": "",
+      "locator": "android"
     }
   ]
 }

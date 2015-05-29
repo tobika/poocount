@@ -10,3 +10,5 @@ playstore/
 *.sublime*
 *.keystore
 .idea/
+
+www/js/app.bundle.js

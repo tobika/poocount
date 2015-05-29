@@ -9,6 +9,8 @@
     </author>
   <content src="index.html"/>
   <access origin="*"/>
+  <access origin="market:*" launch-external="yes"/>
+  <allow-intent href="market:*"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
