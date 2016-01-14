@@ -7,19 +7,22 @@ var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
 var sourcemaps = require('gulp-sourcemaps');
+var templateCache = require('gulp-angular-templatecache');
 
 var paths = {
   sass: ['./scss/**/*.scss'],
-  scripts: ['./www/js/**/*.js', '!./www/js/app.bundle.js']
+  scripts: ['./src/**/*.js', '!./www/js/app.bundle.js'],
+  vendor: ['./vendor/**/*.js'],
+  templateCache: ['./www/templates/**/*.html']
 };
 
 var files = {
   jsbundle: 'app.bundle.js',
+  vendorbundle: 'vendor.bundle.js',
   appcss: 'app.css'
 };
 
-gulp.task('default', ['sass']);
-
+gulp.task('default', ['sass','vendor','templatecache']);
 
 // scripts - clean dist dir then annotate, minify, concat
 gulp.task('scripts', function() {
@@ -35,7 +38,24 @@ gulp.task('scripts', function() {
     //  .pipe(uglify())
       .pipe(concat(files.jsbundle))
       .pipe(sourcemaps.write())
-      .pipe(gulp.dest('./www/js'));
+      .pipe(gulp.dest('./www/dist'));
+});
+
+gulp.task('templatecache', function(done){
+    gulp.src('./src/templates/**/*.html')
+        .pipe(templateCache({standalone:true}))
+        .pipe(gulp.dest('./www/dist'))
+        .on('end', done);
+});
+
+gulp.task('vendor', function() {
+  gulp.src(['./vendor/ionic/js/ionic.bundle.min.js',
+            './vendor/ngCordova/dist/ng-cordova.min.js',
+            './vendor/angular-translate/angular-translate.min.js',
+            'vendor/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js',
+            './vendor_manual/**/*.js'])
+      .pipe(concat(files.vendorbundle))
+      .pipe(gulp.dest('./www/dist/'));
 });
 
 gulp.task('sass', function(done) {
@@ -53,6 +73,8 @@ gulp.task('sass', function(done) {
 gulp.task('watch', function() {
   gulp.watch(paths.sass, ['sass']);
   gulp.watch(paths.scripts, ['scripts']);
+  gulp.watch(paths.vendor, ['vendor']);
+    gulp.watch(paths.templatecache, ['templatecache']);
 });
 
 gulp.task('install', ['git-check'], function() {

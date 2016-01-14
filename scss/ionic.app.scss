@@ -25,7 +25,11 @@ $dark:                            #36352C !default;
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
-@import "www/lib/ionic/scss/ionic";
+@import "vendor/ionic/scss/ionic";
+@import "poocount";
+@import "picker/default";
+@import "picker/default.date";
+@import "picker/default.time";
 
 input {
 	width: 40% !important; 

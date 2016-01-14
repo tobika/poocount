@@ -10,5 +10,6 @@ playstore/
 *.sublime*
 *.keystore
 .idea/
+vendor
 
-www/js/app.bundle.js
+www/dist/

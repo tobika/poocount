@@ -1,0 +1,57 @@
+.settings-subheader {
+	color: white;
+	background-color: #4E8EF7 ;
+	border: none;
+	/*margin-top: 20px;*/
+}
+
+input.add {
+    /*border: solid 1px !important;*/
+    text-align: left;
+    background-color: white !important;
+    width: auto !important;
+    min-width: 0 !important;
+    margin-left: 15px;
+    font-size: 16px;
+}
+
+.notetext {
+    min-height: 15vh;
+}
+
+.tabs-striped .tabs {
+  border-width: 0 !important;
+}
+
+/*Icons*/
+.item .badge + .badge {
+  margin-right: 40px;
+}
+.item .badge + .badge + .badge{
+  margin-right: 85px;
+}
+.badge.badge-poo {
+  background-color: #387EF5;
+  color: #FFF;
+}
+.badge.badge-blood {
+  background-color: #EF473A;
+  color: #FFF;
+}
+.badge.badge-notes {
+  color: #5d5d5d;
+}
+
+.bar-footer {
+  height: 70px;
+  padding: 0;
+}
+
+.bottomrecent {
+  width: 100%;
+}
+.bottomrecent .item {
+  color: white;
+  background-color: #387EF5 !important;
+  border-style: none;
+}

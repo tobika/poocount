@@ -3,11 +3,15 @@
   "app_id": "7c28fcc7",
   "gulpStartupTasks": [
     "sass",
+    "scripts",
+    "vendor",
+    "templatecache",
     "watch"
   ],
   "watchPatterns": [
     "www/**/*",
-    "!www/lib/**/*"
+    "!www/lib/**/*",
+    "vendor/**/*"
   ],
   "browsers": [
     {
