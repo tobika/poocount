@@ -25,7 +25,7 @@
 		  <a class="button button-outline button-assertive" ng-class="{active: (element.blood == 2)}" ng-click="setBlood(2)">++</a>
 		</div>
         <br>
-        <div ng-if="showDiarrhea" ng-init="element.diarrhea = 0" class="button-bar">
+        <div ng-if="(showDiarrhea)" ng-init="element.diarrhea = 0" class="button-bar">
             <a class="button button-outline button-energized" ng-class="{active: (element.diarrhea == 0)}" ng-click="setDiarrhea(0)">{{ 'add_DIARRHEA' | translate }} 0</a>
             <a class="button button-outline button-energized" ng-class="{active: (element.diarrhea == 1)}" ng-click="setDiarrhea(1)">+</a>
             <a class="button button-outline button-energized" ng-class="{active: (element.diarrhea == 2)}" ng-click="setDiarrhea(2)">++</a>

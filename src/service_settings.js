@@ -8,12 +8,6 @@ angular.module('starter.services').factory('SettingsService', function($q) {
     name: 'poocountStorage'
   });
 
-  localforage.getItem('showDiarrhea').then(function(value) {
-    if (value) {
-      showDiarrhea = value;
-    }
-  });
-
   return {
     getLanguage: function() {
       return language;
@@ -38,7 +32,7 @@ angular.module('starter.services').factory('SettingsService', function($q) {
       return deferred.promise;
     },
     getShowDiarrhea: function () {
-      return showDiarrhea;
+      return localforage.getItem('showDiarrhea');
     },
     setShowDiarrhea: function(newShowDiarrhea) {
       localforage.setItem('showDiarrhea', newShowDiarrhea);

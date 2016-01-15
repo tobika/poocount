@@ -4,7 +4,11 @@ angular.module('starter.controllers').controller('AddCtrl', function ($scope, Da
 
     $scope.$on("$ionicView.beforeEnter", function (scopes, states) {
 
-        $scope.showDiarrhea = SettingsService.getShowDiarrhea();
+         SettingsService.getShowDiarrhea().then(function(value) {
+            if (value) {
+                $scope.showDiarrhea = value;
+            }
+        });
     });
 
     $scope.add = function () {
