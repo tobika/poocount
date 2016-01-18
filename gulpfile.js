@@ -13,7 +13,7 @@ var paths = {
   sass: ['./scss/**/*.scss'],
   scripts: ['./src/**/*.js', '!./www/js/app.bundle.js'],
   vendor: ['./vendor/**/*.js'],
-  templateCache: ['./www/templates/**/*.html']
+  templateCache: ['./src/**/*.html']
 };
 
 var files = {
@@ -42,7 +42,7 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('templatecache', function(done){
-    gulp.src('./src/templates/**/*.html')
+    gulp.src('./src/**/*.html')
         .pipe(templateCache({standalone:true}))
         .pipe(gulp.dest('./www/dist'))
         .on('end', done);

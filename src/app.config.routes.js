@@ -13,7 +13,7 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
         .state('tab', {
             url: "/tab",
             abstract: true,
-            templateUrl: "tabs.html",
+            templateUrl: "tab/tab.template.html",
             controller: 'TabCtrl'
         })
 
@@ -23,7 +23,7 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             url: '/add',
             views: {
                 'tab-add': {
-                    templateUrl: 'tab-new.html',
+                    templateUrl: 'add/add.template.html',
                     controller: 'AddCtrl'
                 }
             }
@@ -42,7 +42,7 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             url: '/stats',
             views: {
                 'tab-stats': {
-                    templateUrl: 'stats-charts.html',
+                    templateUrl: 'stats/stats.charts.template.html',
                     controller: 'StatsChartsCtrl'
                 }
             }
@@ -51,7 +51,7 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             url: '/list',
             views: {
                 'tab-list': {
-                    templateUrl: 'tab-list.html',
+                    templateUrl: 'list/list.template.html',
                     controller: 'ListCtrl',
                     resolve: {
                         message: function (ListService) {
@@ -65,7 +65,7 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             url: '/listday/:dayId',
             views: {
                 'tab-list': {
-                    templateUrl: 'list-day.html',
+                    templateUrl: 'list/list.day.template.html',
                     controller: 'ListDetailDayCtrl'
                 }
             }
@@ -74,7 +74,7 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             url: '/list/:friendId',
             views: {
                 'tab-list': {
-                    templateUrl: 'list-detail.html',
+                    templateUrl: 'list/list.detail.template.html',
                     controller: 'FriendDetailCtrl'
                 }
             }
@@ -83,7 +83,7 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             url: '/settings',
             views: {
                 'tab-settings': {
-                    templateUrl: 'tab-settings.html',
+                    templateUrl: 'settings/settings.template.html',
                     controller: 'SettingsCtrl'
                 }
             }
@@ -92,7 +92,7 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             url: '/settings/languages',
             views: {
                 'tab-settings': {
-                    templateUrl: 'settings-languages.html',
+                    templateUrl: 'settings/settings.languages.template.html',
                     controller: 'SettingsLanguagesCtrl'
                 }
             }
@@ -101,7 +101,7 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             url: '/settings/backup',
             views: {
                 'tab-settings': {
-                    templateUrl: 'settings-backup.html',
+                    templateUrl: 'settings/settings.backup.template.html',
                     controller: 'SettingsBackupCtrl'
                 }
             }
@@ -110,7 +110,7 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             url: '/settings/developer',
             views: {
                 'tab-settings': {
-                    templateUrl: 'settings-developer.html',
+                    templateUrl: 'settings/settings.developer.template.html',
                     controller: 'SettingsDeveloperCtrl'
                 }
             }
@@ -119,7 +119,7 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             url: '/settings/help',
             views: {
                 'tab-settings': {
-                    templateUrl: 'settings-help.html'
+                    templateUrl: 'settings/settings.help.template.html'
                 }
             }
         });
