@@ -29,17 +29,17 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             }
         })
 
+        //.state('tab.stats', {
+        //    url: '/stats',
+        //    views: {
+        //        'tab-stats': {
+        //            templateUrl: 'tab-stats.html',
+        //            controller: 'StatsCtrl'
+        //        }
+        //    }
+        //})
         .state('tab.stats', {
             url: '/stats',
-            views: {
-                'tab-stats': {
-                    templateUrl: 'tab-stats.html',
-                    controller: 'StatsCtrl'
-                }
-            }
-        })
-        .state('tab.stats-charts', {
-            url: '/stats/charts',
             views: {
                 'tab-stats': {
                     templateUrl: 'stats-charts.html',

@@ -4,7 +4,13 @@ angular.module('starter.controllers').controller('StatsChartsCtrl', function($sc
       $ionicLoading.show({
           template: 'Loading...'
       });
-     $scope.showDiarrhea = SettingsService.getShowDiarrhea();
+
+      SettingsService.getShowDiarrhea().then(function(value) {
+          if (value) {
+              $scope.showDiarrhea = value;
+          }
+      });
+
      //if (Database.hasChanged('stats') === true) {
       Database.all(function(allData) {
         $timeout(function() {
