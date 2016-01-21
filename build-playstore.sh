@@ -3,7 +3,7 @@ VERSION="0.3"
 
 echo Preparing playstore apks for version $VERSION
 
-#BUILD_MULTIPLE_APKS=true ionic build --release android
+BUILD_MULTIPLE_APKS=true ionic build --release android
 
 read -p "Press any key to continue... " -n1 -s
 

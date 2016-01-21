@@ -1,4 +1,4 @@
-angular.module('starter.controllers').controller('ListCtrl', function($scope, Database, $timeout, ListService) {
+angular.module('starter.controllers').controller('ListController', function($scope, Database, $timeout, ListService) {
   $scope.listData = [];
   $scope.allData = [];
 
@@ -13,7 +13,7 @@ angular.module('starter.controllers').controller('ListCtrl', function($scope, Da
 
 })
 
-.controller('ListDetailDayCtrl', function($scope, $stateParams, ListService) {
+.controller('ListDetailDayController', function($scope, $stateParams, ListService) {
 
   $scope.$on("$ionicView.beforeEnter", function( scopes, states ) {
     ListService.initListService().then(function() {
@@ -23,7 +23,7 @@ angular.module('starter.controllers').controller('ListCtrl', function($scope, Da
   });
 })
 
-.controller('FriendDetailCtrl', function($scope, $stateParams, Database, $ionicHistory) {
+.controller('FriendDetailController', function($scope, $stateParams, Database, $ionicHistory) {
 
   $scope.$on("$ionicView.beforeEnter", function( scopes, states ) {
     $scope.element = Database.get($stateParams.friendId);

@@ -1,4 +1,4 @@
-angular.module('starter.controllers').controller('SettingsBackupCtrl', function($scope, BackupService, $ionicActionSheet) {
+angular.module('starter.controllers').controller('SettingsBackupController', function($scope, BackupService, $ionicActionSheet) {
 
   $scope.exportBackup = function() {
     BackupService.exportBackup().then(function() {

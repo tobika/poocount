@@ -14,7 +14,7 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             url: "/tab",
             abstract: true,
             templateUrl: "tab/tab.template.html",
-            controller: 'TabCtrl'
+            controller: 'TabController'
         })
 
         // Each tab has its own nav history stack:
@@ -24,7 +24,7 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             views: {
                 'tab-add': {
                     templateUrl: 'add/add.template.html',
-                    controller: 'AddCtrl'
+                    controller: 'AddController'
                 }
             }
         })
@@ -43,7 +43,7 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             views: {
                 'tab-stats': {
                     templateUrl: 'stats/stats.charts.template.html',
-                    controller: 'StatsChartsCtrl'
+                    controller: 'StatsChartsController'
                 }
             }
         })
@@ -52,7 +52,7 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             views: {
                 'tab-list': {
                     templateUrl: 'list/list.template.html',
-                    controller: 'ListCtrl',
+                    controller: 'ListController',
                     resolve: {
                         message: function (ListService) {
                             return ListService.initListService();
@@ -66,7 +66,7 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             views: {
                 'tab-list': {
                     templateUrl: 'list/list.day.template.html',
-                    controller: 'ListDetailDayCtrl'
+                    controller: 'ListDetailDayController'
                 }
             }
         })
@@ -75,7 +75,7 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             views: {
                 'tab-list': {
                     templateUrl: 'list/list.detail.template.html',
-                    controller: 'FriendDetailCtrl'
+                    controller: 'FriendDetailController'
                 }
             }
         })
@@ -84,7 +84,7 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             views: {
                 'tab-settings': {
                     templateUrl: 'settings/settings.template.html',
-                    controller: 'SettingsCtrl'
+                    controller: 'SettingsController'
                 }
             }
         })
@@ -93,7 +93,7 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             views: {
                 'tab-settings': {
                     templateUrl: 'settings/settings.languages.template.html',
-                    controller: 'SettingsLanguagesCtrl'
+                    controller: 'SettingsLanguagesController'
                 }
             }
         })
@@ -102,7 +102,7 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             views: {
                 'tab-settings': {
                     templateUrl: 'settings/settings.backup.template.html',
-                    controller: 'SettingsBackupCtrl'
+                    controller: 'SettingsBackupController'
                 }
             }
         })
@@ -111,7 +111,7 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             views: {
                 'tab-settings': {
                     templateUrl: 'settings/settings.developer.template.html',
-                    controller: 'SettingsDeveloperCtrl'
+                    controller: 'SettingsDeveloperController'
                 }
             }
         })

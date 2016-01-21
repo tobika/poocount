@@ -1,4 +1,4 @@
-angular.module('starter.controllers').controller('SettingsDeveloperCtrl', function($scope, Database, $translate) {
+angular.module('starter.controllers').controller('SettingsDeveloperController', function($scope, Database, $translate) {
   $scope.deleteAll = function() {
     $translate('settings_CONFIRMDELETE').then(function successFn(translation) {
         var result = confirm(translation);

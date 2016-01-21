@@ -1,4 +1,4 @@
-angular.module('starter.controllers').controller('StatsChartsCtrl', function($scope, Database, $timeout, $translate, SettingsService, $ionicLoading) {
+angular.module('starter.controllers').controller('StatsChartsController', function($scope, Database, $timeout, $translate, SettingsService, $ionicLoading) {
 
   $scope.$on("$ionicView.beforeEnter", function() {
       $ionicLoading.show({

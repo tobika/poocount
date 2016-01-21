@@ -1,4 +1,4 @@
-angular.module('starter.controllers').controller('AddCtrl', function ($scope, Database, SettingsService) {
+angular.module('starter.controllers').controller('AddController', function ($scope, Database, SettingsService) {
 
     $scope.element = {date: moment().format('DD/MM/YYYY'), time: moment().format('HH:mm')};
 
