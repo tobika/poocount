@@ -1,37 +1,43 @@
-angular.module('starter.controllers').controller('ListController', function($scope, Database, $timeout, ListService) {
-  $scope.listData = [];
-  $scope.allData = [];
+angular.module('starter.controllers').controller('ListController', function ($scope, Database, $timeout, ListService) {
 
-  $scope.$on("$ionicView.beforeEnter", function( scopes, states ) {
+    var vm = this;
 
-    if (Database.hasChanged('listController') === true) {
+    vm.listData = [];
+    vm.allData = [];
 
-      $scope.groups = ListService.getDaysList();
-      Database.gotData('listController');
-    }
-  });
+    $scope.$on("$ionicView.beforeEnter", function (scopes, states) {
 
-})
+        if (Database.hasChanged('listController') === true) {
 
-.controller('ListDetailDayController', function($scope, $stateParams, ListService) {
-
-  $scope.$on("$ionicView.beforeEnter", function( scopes, states ) {
-    ListService.initListService().then(function() {
-      $scope.listData = ListService.getDayList($stateParams.dayId);
-      console.log(JSON.stringify($scope.listData));
+            vm.groups = ListService.getDaysList();
+            Database.gotData('listController');
+        }
     });
-  });
 })
 
-.controller('FriendDetailController', function($scope, $stateParams, Database, $ionicHistory) {
+.controller('ListDetailDayController', function ($scope, $stateParams, ListService) {
 
-  $scope.$on("$ionicView.beforeEnter", function( scopes, states ) {
-    $scope.element = Database.get($stateParams.friendId);
-  });
+    var vm = this;
 
-  $scope.deleteElement = function() {
+    $scope.$on("$ionicView.beforeEnter", function (scopes, states) {
+        ListService.initListService().then(function () {
+            vm.listData = ListService.getDayList($stateParams.dayId);
+            //console.log(JSON.stringify($scope.listData));
+        });
+    });
+})
 
-  	Database.deleteElement($scope.element.id);
-    $ionicHistory.goBack();
-  };
+.controller('FriendDetailController', function ($scope, $stateParams, Database, $ionicHistory) {
+
+    var vm = this;
+
+    $scope.$on("$ionicView.beforeEnter", function (scopes, states) {
+        vm.element = Database.get($stateParams.friendId);
+    });
+
+    vm.deleteElement = function () {
+
+        Database.deleteElement(vm.element.id);
+        $ionicHistory.goBack();
+    };
 });

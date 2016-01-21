@@ -1,17 +1,12 @@
 <ion-view title="{{ 'settings_LANGUAGE' | translate }}">
-<ion-content>
-<div class="list">
-
-	<div class="button-bar">
-		<button class="button" ng-click="setLanguage('en')">EN</button>
-		<button class="button" ng-click="setLanguage('fr')">FR</button>
-		<button class="button" ng-click="setLanguage('de')">DE</button>
-	</div>
-
-	<button class="button button-full" ng-click="setLanguage('')">{{ 'settings_REMOVEDEFAULTLANGUAGE' | translate }}</button>
-
-</div>
-
-</ion-content>
-
+	<ion-content>
+		<div class="list">
+			<div class="button-bar">
+				<button class="button" ng-click="lc.setLanguage('en')">EN</button>
+				<button class="button" ng-click="lc.setLanguage('fr')">FR</button>
+				<button class="button" ng-click="lc.setLanguage('de')">DE</button>
+			</div>
+			<button class="button button-full" ng-click="lc.setLanguage('')">{{ 'settings_REMOVEDEFAULTLANGUAGE' | translate }}</button>
+		</div>
+	</ion-content>
 </ion-view>

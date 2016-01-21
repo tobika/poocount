@@ -1,19 +1,19 @@
-angular.module('starter.services').factory('BackupService', function($q, $cordovaFile, Database) {
+angular.module('starter.services').factory('BackupService', function($q, $cordovaFile, Database, $window) {
   var backupFiles = [];
 
   return {
     getBackupFiles: function() {
       var deferred = $q.defer();
 
-      if (cordova && cordova.file && cordova.file.externalRootDirectory && window.resolveLocalFileSystemURL) {
-        window.resolveLocalFileSystemURL(cordova.file.externalRootDirectory, function(dir) {
+      if (cordova && cordova.file && cordova.file.externalRootDirectory && $window.resolveLocalFileSystemURL) {
+        $window.resolveLocalFileSystemURL(cordova.file.externalRootDirectory, function(dir) {
           console.log("Get filelist");
           var dirReader = dir.createReader();
 
           dirReader.readEntries (function(results) {
             backupFiles = [];
 
-            //console.log(JSON.stringify(results));
+            //console.log(angular.fromJSON(results));
             for (var i = 0; i < results.length; i++) {
               if (results[i].name.indexOf("Poocount") >= 0) {
                 //console.log(results[i].name);
@@ -36,7 +36,7 @@ angular.module('starter.services').factory('BackupService', function($q, $cordov
     exportBackup: function() {
       var deferred = $q.defer();
 
-      window.resolveLocalFileSystemURL(cordova.file.externalRootDirectory, function(dir) {
+      $window.resolveLocalFileSystemURL(cordova.file.externalRootDirectory, function(dir) {
         console.log("Export: goto sdcard",dir);
         dir.getFile("PoocountBackup_" + moment(new Date()).format("YYYYMMDD_hhmmss") + ".txt", {create:true}, function(file) {
           console.log("create file", file);
@@ -52,14 +52,14 @@ angular.module('starter.services').factory('BackupService', function($q, $cordov
               exportObject.poocountDBVersion = 0;
               exportObject.data = allData;
 
-              var blob = new Blob([JSON.stringify(exportObject)], {type:'text/plain'});
+              var blob = new Blob([angular.fromJSON(exportObject)], {type:'text/plain'});
               fileWriter.write(blob);
               console.log("File wrote");
               deferred.resolve();
             }); 
 
           }, function(error) {
-            console.log("Error: " + JSON.stringify(error));
+            console.log("Error: " + angular.fromJSON(error));
             deferred.reject(error);
           });
 
@@ -71,20 +71,20 @@ angular.module('starter.services').factory('BackupService', function($q, $cordov
     importBackup: function(fileURI) {
       var deferred = $q.defer();
 
-      window.resolveLocalFileSystemURL(fileURI, function(fileEntry) {
+      $window.resolveLocalFileSystemURL(fileURI, function(fileEntry) {
 
         fileEntry.file(function(file) {
            var reader = new FileReader();
 
           reader.onloadend = function(e) {
-            var importedData = JSON.parse(reader.result);
-            console.log("Filedata: " + JSON.stringify(importedData));
+            var importedData = angular.toJSON(reader.result);
+            console.log("Filedata: " + angular.fromJSON(importedData));
 
             Database.importData(importedData.data);
             deferred.resolve();
           };
           reader.onerror = function(e) {
-            console.log("Error: " + JSON.stringify(e));
+            console.log("Error: " + angular.fromJSON(e));
             deferred.reject(e);
           };
 
@@ -98,13 +98,13 @@ angular.module('starter.services').factory('BackupService', function($q, $cordov
     deleteBackupFile: function(fileURI) {
       var deferred = $q.defer();
 
-      window.resolveLocalFileSystemURL(fileURI, function(fileEntry) {
+      $window.resolveLocalFileSystemURL(fileURI, function(fileEntry) {
 
         fileEntry.remove(function() {
           console.log('File removed.');
           deferred.resolve();
         }, function(e) {
-          console.log("Error: " + JSON.stringify(e));
+          console.log("Error: " + angular.fromJSON(e));
           deferred.reject(e);
         });
       });

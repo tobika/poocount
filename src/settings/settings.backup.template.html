@@ -1,18 +1,16 @@
 <ion-view title="{{ 'settings_IMPORTEXPORT' | translate }}">
-<ion-content>
-<div class="list">
-	<button class="button button-full" ng-click="exportBackup()">{{ 'settings_EXPORT' | translate }}</button>
+	<ion-content>
+		<div class="list">
+			<button class="button button-full" ng-click="bc.exportBackup()">{{ 'settings_EXPORT' | translate }}</button>
 
-	<div class="item item-divider item-text-wrap settings-subheader">
-		{{ 'settings_IMPORT' | translate }}
-	</div>
+			<div class="item item-divider item-text-wrap settings-subheader">
+				{{ 'settings_IMPORT' | translate }}
+			</div>
 
-	<div ng-repeat="file in backupFiles" class="item" ng-click="showActionSheetImport($index)">
-		{{ file.name }}
-	</div>
+			<div ng-repeat="file in bc.backupFiles" class="item" ng-click="bc.showActionSheetImport($index)">
+				{{ file.name }}
+			</div>
 
-</div>
-
-</ion-content>
-
+		</div>
+	</ion-content>
 </ion-view>

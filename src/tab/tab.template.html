@@ -28,10 +28,10 @@
 <ion-footer-bar>
   <div class="bottomrecent">
   <ion-item type="item-icon-left">
-    <i class="icon" ng-class="{'ion-disc' : (lastEntry.type == 'poo'),'ion-document-text' : (lastEntry.type == 'note')}"></i>
-    {{ lastEntry.date | date: medium}}
-    {{lastEntry.time}} {{lastEntry.noteContent}}
-    <span ng-show="lastEntry.blood > 0" class="badge badge-assertive">{{lastEntry.blood}}</span>
+    <i class="icon" ng-class="{'ion-disc' : (tc.lastEntry.type == 'poo'),'ion-document-text' : (tc.lastEntry.type == 'note')}"></i>
+    {{ tc.lastEntry.date | date: medium}}
+    {{tc.lastEntry.time}} {{tc.lastEntry.noteContent}}
+    <span ng-show="tc.lastEntry.blood > 0" class="badge badge-assertive">{{tc.lastEntry.blood}}</span>
   </ion-item>
   </div>
 </ion-footer-bar>

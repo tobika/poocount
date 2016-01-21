@@ -1,40 +1,42 @@
 angular.module('starter.controllers').controller('AddController', function ($scope, Database, SettingsService) {
 
-    $scope.element = {date: moment().format('DD/MM/YYYY'), time: moment().format('HH:mm')};
+    var vm = this;
+
+    vm.element = {date: moment().format('DD/MM/YYYY'), time: moment().format('HH:mm')};
 
     $scope.$on("$ionicView.beforeEnter", function (scopes, states) {
 
          SettingsService.getShowDiarrhea().then(function(value) {
             if (value) {
-                $scope.showDiarrhea = value;
+                vm.showDiarrhea = value;
             }
         });
     });
 
-    $scope.add = function () {
+    vm.add = function () {
 
-        var element = $scope.element;
+        var element = vm.element;
 
         // check if there is no timezone problem anymore, before it was moment.utc
         element.date = moment(element.date + " " + element.time, "DD/MM/YYYY HH:mm").toDate();
 
         console.log(element);
         Database.add(element);
-        $scope.element = {
-            date: moment($scope.element.date).format('DD/MM/YYYY'),
-            time: $scope.element.time,
-            type: $scope.element.type,
-            blood: $scope.element.blood
+        vm.element = {
+            date: moment(vm.element.date).format('DD/MM/YYYY'),
+            time: vm.element.time,
+            type: vm.element.type,
+            blood: vm.element.blood
         };
 
-        if ($scope.showDiarrhea) {
+        if (vm.showDiarrhea) {
 
-            $scope.element.diarrhea = element.diarrhea;
+            vm.element.diarrhea = element.diarrhea;
         }
 
-        if (window.plugins) {
+        if ($window.plugins) {
 
-            window.plugins.toast.show('New entry added: ' + element.date.toString(), 'long', 'bottom',
+            $window.plugins.toast.show('New entry added: ' + element.date.toString(), 'long', 'bottom',
                 function (a) {
                     console.log('toast success: ' + a);
                 },
@@ -44,9 +46,9 @@ angular.module('starter.controllers').controller('AddController', function ($sco
         }
     };
 
-    $scope.desktop = !ionic.Platform.isWebView();//!$ionicPlatform.isWebView();
+    vm.desktop = !ionic.Platform.isWebView();//!$ionicPlatform.isWebView();
 
-    $scope.options = {
+    vm.options = {
         format: 'dd/mm/yyyy', // ISO formatted date
         //clear: null,
         //container: 'body',
@@ -55,47 +57,47 @@ angular.module('starter.controllers').controller('AddController', function ($sco
         }
     };
 
-    $scope.optionsTime = {
+    vm.optionsTime = {
         format: 'HH:i', // ISO formatted date
         onClose: function (e) {
             // do something when the picker closes
         }
     };
 
-    $scope.today = function () {
+    vm.today = function () {
 
-        $scope.element.date = moment().format('DD/MM/YYYY');
+        vm.element.date = moment().format('DD/MM/YYYY');
     };
-    $scope.now = function () {
+    vm.now = function () {
 
-        $scope.element.time = moment().format('HH:mm');
-    };
-
-    $scope.setType = function (type) {
-
-        $scope.element.type = type;
+        vm.element.time = moment().format('HH:mm');
     };
 
-    $scope.setBlood = function (blood) {
+    vm.setType = function (type) {
 
-        $scope.element.blood = blood;
+        vm.element.type = type;
     };
 
-    $scope.setDiarrhea = function (diarrhea) {
+    vm.setBlood = function (blood) {
 
-        $scope.element.diarrhea = diarrhea;
+        vm.element.blood = blood;
     };
 
-    $scope.isSelected = function (type) {
+    vm.setDiarrhea = function (diarrhea) {
+
+        vm.element.diarrhea = diarrhea;
+    };
+
+    vm.isSelected = function (type) {
         // TODO simplify
         console.log("isSelected");
-        if (type == $scope.element.type) {
+        if (type == vm.element.type) {
             return true;
         }
         return false;
     };
 
-    $scope.convertToDate = function (stringDate) {
+    vm.convertToDate = function (stringDate) {
 
         return "moment(stringDate).format('DD/MM/YYYY')";
     };

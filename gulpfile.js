@@ -74,7 +74,7 @@ gulp.task('watch', function() {
   gulp.watch(paths.sass, ['sass']);
   gulp.watch(paths.scripts, ['scripts']);
   gulp.watch(paths.vendor, ['vendor']);
-    gulp.watch(paths.templatecache, ['templatecache']);
+    gulp.watch(paths.templateCache, ['templatecache']);
 });
 
 gulp.task('install', ['git-check'], function() {

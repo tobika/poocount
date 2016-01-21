@@ -2,5 +2,8 @@
     "extends": "angular",
     "plugins": [
         "angular"
-    ]
+    ],
+    "rules": {
+        "angular/log": 0
+    }
 }

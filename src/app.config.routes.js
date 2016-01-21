@@ -14,7 +14,8 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             url: "/tab",
             abstract: true,
             templateUrl: "tab/tab.template.html",
-            controller: 'TabController'
+            controller: 'TabController',
+            controllerAs: 'tc'
         })
 
         // Each tab has its own nav history stack:
@@ -24,7 +25,8 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             views: {
                 'tab-add': {
                     templateUrl: 'add/add.template.html',
-                    controller: 'AddController'
+                    controller: 'AddController',
+                    controllerAs: 'ac'
                 }
             }
         })
@@ -43,7 +45,8 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             views: {
                 'tab-stats': {
                     templateUrl: 'stats/stats.charts.template.html',
-                    controller: 'StatsChartsController'
+                    controller: 'StatsChartsController',
+                    controllerAs: 'sc'
                 }
             }
         })
@@ -57,7 +60,8 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
                         message: function (ListService) {
                             return ListService.initListService();
                         }
-                    }
+                    },
+                    controllerAs: 'lc'
                 }
             }
         })
@@ -66,7 +70,8 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             views: {
                 'tab-list': {
                     templateUrl: 'list/list.day.template.html',
-                    controller: 'ListDetailDayController'
+                    controller: 'ListDetailDayController',
+                    controllerAs: 'lc'
                 }
             }
         })
@@ -75,7 +80,8 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             views: {
                 'tab-list': {
                     templateUrl: 'list/list.detail.template.html',
-                    controller: 'FriendDetailController'
+                    controller: 'FriendDetailController',
+                    controllerAs: 'lc'
                 }
             }
         })
@@ -84,7 +90,8 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             views: {
                 'tab-settings': {
                     templateUrl: 'settings/settings.template.html',
-                    controller: 'SettingsController'
+                    controller: 'SettingsController',
+                    controllerAs: 'sc'
                 }
             }
         })
@@ -93,7 +100,8 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             views: {
                 'tab-settings': {
                     templateUrl: 'settings/settings.languages.template.html',
-                    controller: 'SettingsLanguagesController'
+                    controller: 'SettingsLanguagesController',
+                    controllerAs: 'lc'
                 }
             }
         })
@@ -102,7 +110,8 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             views: {
                 'tab-settings': {
                     templateUrl: 'settings/settings.backup.template.html',
-                    controller: 'SettingsBackupController'
+                    controller: 'SettingsBackupController',
+                    controllerAs: 'bc'
                 }
             }
         })
@@ -111,7 +120,8 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             views: {
                 'tab-settings': {
                     templateUrl: 'settings/settings.developer.template.html',
-                    controller: 'SettingsDeveloperController'
+                    controller: 'SettingsDeveloperController',
+                    controllerAs: 'dc'
                 }
             }
         })

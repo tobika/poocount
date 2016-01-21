@@ -1,17 +1,16 @@
 <ion-view title="{{ 'list_LIST' | translate }}">
-    <ion-nav-buttons side="primary">
-    </ion-nav-buttons>
+  <ion-nav-buttons side="primary">
+  </ion-nav-buttons>
   <ion-content>
     <div class="list">
       <div class="item item-divider">
-        {{ listData.date | date: medium}}
+        {{ lc.listData.date | date: medium}}
       </div>
-      <ion-item ng-repeat="element in listData.items track by element.id" type="item-icon-left" href="#/tab/list/{{element.id}}">
-      	<i class="icon" ng-class="{'ion-disc' : (element.type == 'poo'),'ion-document-text' : (element.type == 'note')}"></i>
+      <ion-item ng-repeat="element in lc.listData.items track by element.id" type="item-icon-left" href="#/tab/list/{{element.id}}">
+        <i class="icon" ng-class="{'ion-disc' : (element.type == 'poo'),'ion-document-text' : (element.type == 'note')}"></i>
         {{element.time}} {{element.noteContent}}
         <span ng-show="element.blood > 0" class="badge badge-assertive">{{element.blood}}</span>
       </ion-item>
     </div>
-
   </ion-content>
 </ion-view>

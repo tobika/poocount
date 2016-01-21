@@ -1,33 +1,24 @@
-<!--
-  This template loads for the 'tab.friend-detail' state (app.js)
-  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
-  The FriendsCtrl pulls data from the Friends service (service.js)
-  The Friends service returns an array of friend data
--->
 <ion-view title="{{ 'list_DETAIL' | translate }}">
   <ion-content has-header="true" padding="true">
-  <div class="list card">
+    <div class="list card">
 
-  <div class="item item-icon-left">
-    <i class="icon" ng-class="{'ion-disc' : (element.type == 'poo'),'ion-document-text' : (element.type == 'note')}"></i>
-    <h2>{{element.date | date: medium}}
-        {{element.time}}</h2>
-    <p>Id: {{element.id}}</p>
-  </div>
-  <div class="item item-text-wrap">
-    <p ng-if="(element.type == 'note')">{{element.noteContent}}</p>
-    <p ng-if="(element.type == 'poo')">{{ 'add_BLOOD' | translate }}: {{element.blood}}</p>
-    <p ng-if="(element.type == 'poo') && (element.diarrhea !== 'undefined')">{{ 'add_DIARRHEA' | translate }}: {{element.diarrhea}}</p>
-  </div>
-  
-  <a class="item item-icon-left assertive" ng-click="deleteElement()" href="#">
-    <i class="icon ion-trash-a"></i>
-    {{ 'general_DELETE' | translate }}
-  </a>
+      <div class="item item-icon-left">
+        <i class="icon" ng-class="{'ion-disc' : (lc.element.type == 'poo'),'ion-document-text' : (lc.element.type == 'note')}"></i>
+        <h2>{{lc.element.date | date: medium}}
+          {{lc.element.time}}</h2>
+        <p>Id: {{lc.element.id}}</p>
+      </div>
+      <div class="item item-text-wrap">
+        <p ng-if="(lc.element.type == 'note')">{{lc.element.noteContent}}</p>
+        <p ng-if="(lc.element.type == 'poo')">{{ 'add_BLOOD' | translate }}: {{lc.element.blood}}</p>
+        <p ng-if="(lc.element.type == 'poo') && (lc.element.diarrhea !== 'undefined')">{{ 'add_DIARRHEA' | translate }}: {{lc.element.diarrhea}}</p>
+      </div>
 
-</div>
+      <a class="item item-icon-left assertive" ng-click="lc.deleteElement()" href="#">
+        <i class="icon ion-trash-a"></i>
+        {{ 'general_DELETE' | translate }}
+      </a>
 
-  
-
+    </div>
   </ion-content>
 </ion-view>
