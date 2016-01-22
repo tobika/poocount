@@ -106,12 +106,7 @@ function AddController($scope, Database, SettingsService, $window) {
     };
 
     vm.isSelected = function (type) {
-        // TODO simplify
-        console.log("isSelected");
-        if (type == vm.element.type) {
-            return true;
-        }
-        return false;
+        return type == vm.element.type;
     };
 
     vm.convertToDate = function (stringDate) {
