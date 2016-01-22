@@ -56,7 +56,7 @@ angular.module('starter.services').factory('ListService', function(Database, $q)
     if (!loaded || Database.hasChanged('listService')) {
       Database.all(function(allData) {
         allData = allData.slice().reverse();
-        //console.log("Callback onDataReady for list service", allData);
+        console.log("Callback onDataReady for list service");
 
         if(allData.length > 0) {
           createDateGroups(allData);

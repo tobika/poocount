@@ -21,13 +21,11 @@ function AddController($scope, Database, SettingsService, $window) {
 
     vm.element = {date: moment().format('DD/MM/YYYY'), time: moment().format('HH:mm')};
 
+    init();
+
     $scope.$on("$ionicView.beforeEnter", function (scopes, states) {
 
-         SettingsService.getShowDiarrhea().then(function(value) {
-            if (value) {
-                vm.showDiarrhea = value;
-            }
-        });
+        init();
     });
 
     vm.add = function () {
@@ -113,5 +111,13 @@ function AddController($scope, Database, SettingsService, $window) {
 
         return "moment(stringDate).format('DD/MM/YYYY')";
     };
+
+    function init() {
+        SettingsService.getShowDiarrhea().then(function(value) {
+            if (value) {
+                vm.showDiarrhea = value;
+            }
+        });
+    }
 
 }
