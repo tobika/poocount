@@ -5,9 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in service_database.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'templates', 'ngCordova', 'starter.controllers', 'starter.services', 'angular-datepicker', 'pascalprecht.translate'])
+angular.module('starter', ['ionic', 'templates', 'ngCordova', 'starter.directives', 'starter.controllers', 'starter.services', 'angular-datepicker', 'pascalprecht.translate'])
 
-    .run(function($ionicPlatform, $translate, SettingsService) {
+    .run(function($ionicPlatform, $translate, SettingsService, $window) {
         $ionicPlatform.ready(function() {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
@@ -74,3 +74,5 @@ angular.module('starter', ['ionic', 'templates', 'ngCordova', 'starter.controlle
 angular.module('starter.services', ['ngCordova']);
 
 angular.module('starter.controllers', ['pascalprecht.translate']);
+
+angular.module('starter.directives', ['pascalprecht.translate']);

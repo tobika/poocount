@@ -1,4 +1,21 @@
-angular.module('starter.controllers').controller('AddController', function ($scope, Database, SettingsService) {
+angular.module('starter.directives').directive('add', AddDirective);
+
+function AddDirective() {
+    var directive = {
+        templateUrl: 'add/add.template.html',
+        controller: AddController,
+        // note: This would be 'ExampleController' (the exported controller name, as string)
+        // if referring to a defined controller in its separate file.
+        controllerAs: 'ac',
+        bindToController: true // because the scope is isolated
+    };
+
+    return directive;
+}
+
+AddController.$inject = ['$scope','Database','SettingsService','$window'];
+
+function AddController($scope, Database, SettingsService, $window) {
 
     var vm = this;
 
@@ -102,4 +119,4 @@ angular.module('starter.controllers').controller('AddController', function ($sco
         return "moment(stringDate).format('DD/MM/YYYY')";
     };
 
-});
+}

@@ -24,9 +24,7 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             url: '/add',
             views: {
                 'tab-add': {
-                    templateUrl: 'add/add.template.html',
-                    controller: 'AddController',
-                    controllerAs: 'ac'
+                    template: '<add></add>'
                 }
             }
         })
