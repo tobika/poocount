@@ -11,5 +11,5 @@ playstore/
 *.keystore
 .idea/
 vendor
-
+www/css/ionic.app.min.css
 www/dist/*
