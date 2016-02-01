@@ -1,5 +1,6 @@
 <ion-view title="{{ 'list_LIST' | translate }}">
-    <ion-nav-buttons side="primary">
+    <ion-nav-buttons side="secondary">
+        <exportcsv></exportcsv>
     </ion-nav-buttons>
     <ion-content>
         <ion-item collection-repeat="group in lc.groups" type="item-icon-left" href="#/tab/listday/{{$index}}">

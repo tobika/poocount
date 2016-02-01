@@ -73,6 +73,6 @@ angular.module('starter', ['ionic', 'templates', 'ngCordova', 'starter.directive
 
 angular.module('starter.services', ['ngCordova']);
 
-angular.module('starter.controllers', ['pascalprecht.translate']);
-
 angular.module('starter.directives', ['pascalprecht.translate']);
+
+angular.module('starter.controllers', ['pascalprecht.translate']);

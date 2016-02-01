@@ -42,7 +42,9 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
             url: '/list',
             views: {
                 'tab-list': {
-                    template: '<list></list>'
+                    templateUrl: 'list/list.template.html',
+                    controller: 'ListController',
+                    controllerAs: 'lc'
                 }
             }
         })

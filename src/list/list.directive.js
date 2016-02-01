@@ -1,17 +1,4 @@
-angular.module('starter.directives').directive('list', ListDirective);
-
-function ListDirective() {
-    var directive = {
-        templateUrl: 'list/list.template.html',
-        controller: ListController,
-        // note: This would be 'ExampleController' (the exported controller name, as string)
-        // if referring to a defined controller in its separate file.
-        controllerAs: 'lc',
-        bindToController: true // because the scope is isolated
-    };
-
-    return directive;
-}
+angular.module('starter.controllers').controller('ListController', ListController);
 
 ListController.$inject = ['$scope','Database','ListService'];
 
