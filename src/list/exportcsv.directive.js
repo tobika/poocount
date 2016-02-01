@@ -13,9 +13,9 @@ function ExportCsvDirective() {
     return directive;
 }
 
-ExportCsvController.$inject = ['$scope','Database','$ionicPopover'];
+ExportCsvController.$inject = ['$scope','ExportCsvService','$ionicPopover'];
 
-function ExportCsvController($scope, Database, $ionicPopover) {
+function ExportCsvController($scope, ExportCsvService, $ionicPopover) {
 
     var vm = this;
 
@@ -32,4 +32,8 @@ function ExportCsvController($scope, Database, $ionicPopover) {
     vm.closePopover = function() {
         vm.popover.hide();
     };
+
+    $scope.exportCsv = function() {
+        vm.popover.hide();
+    }
 }
