@@ -39,7 +39,7 @@ angular.module('starter.controllers').controller('StatsChartsController', functi
             addInArray(bloodData,utcDate,chartData[i].blood);
 
             if( vm.showDiarrhea) {
-                if (angular.isDefined(chartData[i].diarrhea)) {
+                if (angular.isUndefined(chartData[i].diarrhea)) {
                     chartData[i].diarrhea = 0;
                 }
                 addInArray(diarrheaData,utcDate,chartData[i].diarrhea);
