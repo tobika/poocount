@@ -13,9 +13,9 @@ function ExportCsvDirective() {
     return directive;
 }
 
-ExportCsvController.$inject = ['$scope','ExportCsvService','$ionicPopover'];
+ExportCsvController.$inject = ['$scope','ExportCsvService','$ionicPopover','$window'];
 
-function ExportCsvController($scope, ExportCsvService, $ionicPopover) {
+function ExportCsvController($scope, ExportCsvService, $ionicPopover, $window) {
 
     var vm = this;
 
@@ -34,6 +34,12 @@ function ExportCsvController($scope, ExportCsvService, $ionicPopover) {
     };
 
     $scope.exportCsv = function() {
+        ExportCsvService.exportCsv().then(function () {
+            if ($window.plugins) {
+
+                $window.plugins.toast.show('Export to internal memory complete.', 'long', 'bottom');
+            }
+        });
         vm.popover.hide();
     }
 }

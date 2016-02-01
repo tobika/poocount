@@ -13,3 +13,4 @@ playstore/
 vendor
 www/css/ionic.app.min.css
 www/dist/*
+*.log
