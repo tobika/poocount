@@ -4,9 +4,9 @@
 		<div class="list list-inset">
 			<div class="item item-input-inset">
 				<i class="icon ion-android-calendar"></i>
-				<input class="inputdata add" type="text" pick-a-date="date" pick-a-date-options="options" ng-model="ac.element.date"/>
+				<input class="inputdata add" type="text" pick-a-date="date" pick-a-date-options="ac.options" ng-model="ac.element.date"/>
 				<i class="icon ion-clock"></i>
-				<input class="inputdata add" pick-a-time="time" pick-a-time-options="optionsTime" type="text" ng-model="ac.element.time"/>
+				<input class="inputdata add" pick-a-time="time" pick-a-time-options="ac.optionsTime" type="text" ng-model="ac.element.time"/>
 				<button ng-click="ac.today();ac.now()" class="button button-outline">
 					{{ 'add_NOW' | translate }}
 				</button>

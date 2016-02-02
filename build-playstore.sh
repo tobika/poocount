@@ -1,5 +1,5 @@
 #!/bin/bash          
-VERSION="0.3"
+VERSION="0.3.1"
 
 echo Preparing playstore apks for version $VERSION
 
