@@ -22,7 +22,7 @@ var files = {
   appcss: 'app.css'
 };
 
-gulp.task('default', ['sass','vendor','templatecache']);
+gulp.task('default', ['sass','vendor','templatecache', 'scripts']);
 
 // scripts - clean dist dir then annotate, minify, concat
 gulp.task('scripts', function() {
