@@ -13,7 +13,7 @@ angular.module('starter.services').factory('BackupService', function($q, $cordov
           dirReader.readEntries (function(results) {
             backupFiles = [];
 
-            //console.log(angular.fromJSON(results));
+            //console.log(angular.fromJson(results));
             for (var i = 0; i < results.length; i++) {
               if (results[i].name.indexOf("Poocount") >= 0) {
                 //console.log(results[i].name);
@@ -52,14 +52,14 @@ angular.module('starter.services').factory('BackupService', function($q, $cordov
               exportObject.poocountDBVersion = 0;
               exportObject.data = allData;
 
-              var blob = new Blob([angular.fromJSON(exportObject)], {type:'text/plain'});
+              var blob = new Blob([angular.toJson(exportObject)], {type:'text/plain'});
               fileWriter.write(blob);
               console.log("File wrote");
               deferred.resolve();
             }); 
 
           }, function(error) {
-            console.log("Error: " + angular.fromJSON(error));
+            console.log("Error: " + angular.fromJson(error));
             deferred.reject(error);
           });
 
@@ -77,14 +77,14 @@ angular.module('starter.services').factory('BackupService', function($q, $cordov
            var reader = new FileReader();
 
           reader.onloadend = function(e) {
-            var importedData = angular.toJSON(reader.result);
-            console.log("Filedata: " + angular.fromJSON(importedData));
+            var importedData = angular.fromJson(reader.result);
+            console.log("Filedata: " + angular.toJson(importedData));
 
             Database.importData(importedData.data);
             deferred.resolve();
           };
           reader.onerror = function(e) {
-            console.log("Error: " + angular.fromJSON(e));
+            console.log("Error: " + angular.toJson(e));
             deferred.reject(e);
           };
 
@@ -104,7 +104,7 @@ angular.module('starter.services').factory('BackupService', function($q, $cordov
           console.log('File removed.');
           deferred.resolve();
         }, function(e) {
-          console.log("Error: " + angular.fromJSON(e));
+          console.log("Error: " + angular.fromJson(e));
           deferred.reject(e);
         });
       });
