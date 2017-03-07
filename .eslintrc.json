@@ -1,12 +1,13 @@
 {
-    "extends": ["angular",
-        "eslint:recommended",
-        "airbnb"],
-    "plugins": [
-        "angular"
-    ],
-    "rules": {
-        "angular/log": 0
-    }
+  "extends": [
+    "angular",
+    "eslint:recommended",
+    "airbnb"
+  ],
+  "plugins": [
+    "angular"
+  ],
+  "rules": {
+    "angular/log": 0
+  }
 }
-
