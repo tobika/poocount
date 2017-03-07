@@ -15,7 +15,7 @@ angular.module('starter.services').factory('BackupService', function($q, $cordov
 
             //console.log(angular.fromJson(results));
             for (var i = 0; i < results.length; i++) {
-              if (results[i].name.indexOf("Poocount") >= 0) {
+              if (results[i].name.indexOf("Poocount") >= 0 && results[i].name.indexOf(".txt") >= 0) {
                 //console.log(results[i].name);
                 backupFiles.push({name: results[i].name, nativeURL: results[i].nativeURL});
               }
