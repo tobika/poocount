@@ -1,9 +1,15 @@
 #!/bin/bash          
-VERSION="0.3.1"
+VERSION="0.3.2"
 
 echo Preparing playstore apks for version $VERSION
 
-BUILD_MULTIPLE_APKS=true ionic build --release android
+echo Checklist : Did you?
+echo 1. google analytics ID for production
+echo 2. change the app id for production
+
+read -p "Press any key to validate checklist... " -n1 -s
+
+BUILD_MULTIPLE_APKS=true ionic build android --release
 
 read -p "Press any key to continue... " -n1 -s
 
@@ -20,8 +26,11 @@ cp ../tobika-release-key.keystore .
 
 echo Signing APKS
 
-jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore tobika-release-key.keystore poocount-x86-release-$VERSION.apk tobika
-jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore tobika-release-key.keystore poocount-armv7-release-$VERSION.apk tobika
+apksigner sign --ks tobika-release-key.keystore poocount-x86-release-$VERSION.apk
+apksigner verify -v poocount-x86-release-$VERSION.apk
+
+apksigner sign --ks tobika-release-key.keystore poocount-armv7-release-$VERSION.apk
+apksigner verify -v poocount-armv7-release-$VERSION.apk
 
 echo Zipaligning APKs
 
