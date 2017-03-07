@@ -13,9 +13,9 @@ function ExportCsvDirective() {
     return directive;
 }
 
-ExportCsvController.$inject = ['$scope','ExportCsvService','$ionicPopover','$window'];
+ExportCsvController.$inject = ['$scope','ExportCsvService','$ionicPopover','$window', 'AnalyticsService'];
 
-function ExportCsvController($scope, ExportCsvService, $ionicPopover, $window) {
+function ExportCsvController($scope, ExportCsvService, $ionicPopover, $window, AnalyticsService) {
 
     var vm = this;
 
@@ -34,6 +34,8 @@ function ExportCsvController($scope, ExportCsvService, $ionicPopover, $window) {
     };
 
     $scope.exportCsv = function() {
+        AnalyticsService.trackEvent('backup', 'csv');
+
         ExportCsvService.exportCsv().then(function () {
             if ($window.plugins) {
 

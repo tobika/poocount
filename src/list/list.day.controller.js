@@ -1,4 +1,4 @@
-angular.module('starter.controllers').controller('ListDetailDayController', function ($scope, $stateParams, ListService) {
+angular.module('starter.controllers').controller('ListDetailDayController', function ($scope, $stateParams, ListService, AnalyticsService) {
 
     var vm = this;
 
@@ -8,10 +8,6 @@ angular.module('starter.controllers').controller('ListDetailDayController', func
             //console.log(JSON.stringify($scope.listData));
         });
 
-        if(typeof window.ga !== undefined) {
-            window.ga.trackView('List_Day')
-        } else {
-            console.log("Google Analytics Unavailable");
-        }
+        AnalyticsService.trackView('List_Day');
     });
 });

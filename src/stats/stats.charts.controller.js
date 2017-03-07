@@ -1,4 +1,4 @@
-angular.module('starter.controllers').controller('StatsChartsController', function($scope, Database, $timeout, $translate, SettingsService, $ionicLoading) {
+angular.module('starter.controllers').controller('StatsChartsController', function($scope, Database, $timeout, $translate, SettingsService, $ionicLoading, AnalyticsService) {
 
     var vm = this;
 
@@ -7,11 +7,7 @@ angular.module('starter.controllers').controller('StatsChartsController', functi
             template: 'Loading...'
         });
 
-      if(typeof window.ga !== undefined) {
-        window.ga.trackView('Stats')
-      } else {
-        console.log("Google Analytics Unavailable");
-      }
+        AnalyticsService.trackView('Stats');
 
         SettingsService.getShowDiarrhea().then(function(value) {
             if (value) {

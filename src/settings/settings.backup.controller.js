@@ -1,10 +1,11 @@
-angular.module('starter.controllers').controller('SettingsBackupController', function($scope, BackupService, $ionicActionSheet) {
+angular.module('starter.controllers').controller('SettingsBackupController', function($scope, BackupService, $ionicActionSheet, AnalyticsService) {
 
     var vm = this;
 
     vm.exportBackup = function() {
         BackupService.exportBackup().then(function() {
             vm.getBackupFiles();
+            AnalyticsService.trackEvent('backup', 'export');
         });
 
     };
@@ -29,6 +30,7 @@ angular.module('starter.controllers').controller('SettingsBackupController', fun
             cancelText: 'Cancel',
             buttonClicked: function(index) {
                 BackupService.importBackup(vm.backupFiles[backupFileId].nativeURL);
+                AnalyticsService.trackEvent('backup', 'import');
                 return true;
             },
             destructiveButtonClicked: function() {
@@ -41,6 +43,7 @@ angular.module('starter.controllers').controller('SettingsBackupController', fun
 
     $scope.$on("$ionicView.enter", function() {
         vm.getBackupFiles();
+        AnalyticsService.trackView('Settings_Backup');
     });
 
 });

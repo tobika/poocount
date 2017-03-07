@@ -78,7 +78,7 @@ angular.module('starter.services').factory('BackupService', function($q, $cordov
 
           reader.onloadend = function(e) {
             var importedData = angular.fromJson(reader.result);
-            console.log("Filedata: " + angular.toJson(importedData));
+            //console.log("Filedata: " + angular.toJson(importedData));
 
             Database.importData(importedData.data);
             deferred.resolve();

@@ -1,4 +1,4 @@
-angular.module('starter.controllers').controller('SettingsController', function($scope, SettingsService) {
+angular.module('starter.controllers').controller('SettingsController', function($scope, SettingsService, AnalyticsService) {
 
     var vm = this;
 
@@ -13,10 +13,6 @@ angular.module('starter.controllers').controller('SettingsController', function(
     };
 
   $scope.$on("$ionicView.beforeEnter", function () {
-    if(typeof window.ga !== undefined) {
-      window.ga.trackView('List')
-    } else {
-      console.log("Google Analytics Unavailable");
-    }
+      AnalyticsService.trackView('Settings');
   });
 });

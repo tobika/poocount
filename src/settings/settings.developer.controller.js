@@ -1,4 +1,4 @@
-angular.module('starter.controllers').controller('SettingsDeveloperController', function(Database, $translate) {
+angular.module('starter.controllers').controller('SettingsDeveloperController', function(Database, $translate, $scope, AnalyticsService) {
 
     var vm = this;
 
@@ -22,4 +22,7 @@ angular.module('starter.controllers').controller('SettingsDeveloperController', 
         }
     };
 
+    $scope.$on("$ionicView.beforeEnter", function () {
+        AnalyticsService.trackView('Settings_Developer');
+    });
 });

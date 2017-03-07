@@ -1,15 +1,11 @@
-angular.module('starter.controllers').controller('FriendDetailController', function ($scope, $stateParams, Database, $ionicHistory) {
+angular.module('starter.controllers').controller('FriendDetailController', function ($scope, $stateParams, Database, $ionicHistory, AnalyticsService) {
 
     var vm = this;
 
     $scope.$on("$ionicView.beforeEnter", function (scopes, states) {
         vm.element = Database.get($stateParams.friendId);
 
-        if(typeof window.ga !== undefined) {
-            window.ga.trackView('List_Detail')
-        } else {
-            console.log("Google Analytics Unavailable");
-        }
+        AnalyticsService.trackView('List_Detail');
     });
 
     vm.deleteElement = function () {

@@ -1,8 +1,8 @@
 angular.module('starter.controllers').controller('ListController', ListController);
 
-ListController.$inject = ['$scope','Database','ListService'];
+ListController.$inject = ['$scope','Database','ListService', 'AnalyticsService'];
 
-function ListController($scope, Database, ListService) {
+function ListController($scope, Database, ListService, AnalyticsService) {
 
     var vm = this;
 
@@ -17,11 +17,7 @@ function ListController($scope, Database, ListService) {
             init();
         }
 
-      if(typeof window.ga !== undefined) {
-        window.ga.trackView('List')
-      } else {
-        console.log("Google Analytics Unavailable");
-      }
+        AnalyticsService.trackView('List');
     });
 
     function init() {

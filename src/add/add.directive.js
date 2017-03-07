@@ -13,9 +13,9 @@ function AddDirective() {
     return directive;
 }
 
-AddController.$inject = ['$scope','Database','SettingsService','$window'];
+AddController.$inject = ['$scope','Database','SettingsService','$window', 'AnalyticsService'];
 
-function AddController($scope, Database, SettingsService, $window) {
+function AddController($scope, Database, SettingsService, $window, AnalyticsService) {
 
     var vm = this;
 
@@ -34,6 +34,8 @@ function AddController($scope, Database, SettingsService, $window) {
 
         // check if there is no timezone problem anymore, before it was moment.utc
         element.date = moment(element.date + " " + element.time, "DD/MM/YYYY HH:mm").toDate();
+
+        AnalyticsService.trackEvent('add', vm.element.type);
 
         console.log(element);
         Database.add(element);
@@ -119,17 +121,7 @@ function AddController($scope, Database, SettingsService, $window) {
             }
         });
 
-        // add view is initiated before ga plugin is ready
-        try {
-          if (typeof window.ga !== undefined) {
-            window.ga.trackView('Add')
-          } else {
-            console.log("Google Analytics Unavailable");
-          }
-        } catch (e){
-           console.log('GA not ready yet');
-        }
-
+        AnalyticsService.trackView('Add');
     }
 
 }

@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'templates', 'ngCordova', 'starter.directives', 'starter.controllers', 'starter.services', 'angular-datepicker', 'pascalprecht.translate'])
 
-  .run(function($ionicPlatform, $translate, SettingsService, $window) {
+  .run(function($ionicPlatform, $translate, SettingsService, $window, AnalyticsService) {
     $ionicPlatform.ready(function() {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
@@ -55,15 +55,7 @@ angular.module('starter', ['ionic', 'templates', 'ngCordova', 'starter.directive
 
       });
 
-      if(typeof window.ga !== undefined) {
-        window.ga.setAnonymizeIp(true);
-        window.ga.debugMode();
-        window.ga.enableUncaughtExceptionReporting(true);
-        window.ga.startTrackerWithId('UA-92621183-1');
-        window.ga.trackView('Add');
-      } else {
-        console.log("Google Analytics Unavailable");
-      }
+      AnalyticsService.init();
 
       if($window.cordova && $window.cordova.plugins.Keyboard) {
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
