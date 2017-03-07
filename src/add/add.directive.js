@@ -118,6 +118,18 @@ function AddController($scope, Database, SettingsService, $window) {
                 vm.showDiarrhea = value;
             }
         });
+
+        // add view is initiated before ga plugin is ready
+        try {
+          if (typeof window.ga !== undefined) {
+            window.ga.trackView('Add')
+          } else {
+            console.log("Google Analytics Unavailable");
+          }
+        } catch (e){
+           console.log('GA not ready yet');
+        }
+
     }
 
 }

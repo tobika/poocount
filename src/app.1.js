@@ -7,69 +7,79 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'templates', 'ngCordova', 'starter.directives', 'starter.controllers', 'starter.services', 'angular-datepicker', 'pascalprecht.translate'])
 
-    .run(function($ionicPlatform, $translate, SettingsService, $window) {
-        $ionicPlatform.ready(function() {
-            // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-            // for form inputs)
-            //console.log(ionic.Platform.isWebView());
-            console.log("Cordova ready");
+  .run(function($ionicPlatform, $translate, SettingsService, $window) {
+    $ionicPlatform.ready(function() {
+      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+      // for form inputs)
+      //console.log(ionic.Platform.isWebView());
+      console.log("Cordova ready");
 
-            if ( navigator && navigator.splashscreen) {
-                navigator.splashscreen.hide();
-                console.log("Hide splashscreen");
+      if ( navigator && navigator.splashscreen) {
+        navigator.splashscreen.hide();
+        console.log("Hide splashscreen");
+      }
+
+
+      SettingsService.initSettings().then( function() {
+        console.log("language initialized");
+
+        var lang = SettingsService.getLanguage();
+        console.log("language: " + lang);
+        if (lang.length > 0) {
+          console.log("Set preset language");
+          $translate.use(lang);
+        }
+        else if (angular.isDefined(navigator.globalization)) {
+          console.log("Use globalization plugin");
+          navigator.globalization.getLocaleName(
+            function (locale) {
+              console.log('locale: ' + locale.value + '\n');
+              lang = locale.value.split("-")[0];
+              $translate.use(lang).then(function(data) {
+                SettingsService.setLanguage(lang);
+                console.log("SUCCESS -> " + data);
+              }, function(error) {
+                console.log("ERROR -> " + error);
+              });
+            },
+            function () {
+              console.log('Error getting locale\n');
             }
+          );
 
+          console.log("End use of globalization plugin");
+        }
+        else {
+          console.log("No globalization plugin");
+        }
 
-            SettingsService.initSettings().then( function() {
-                console.log("language initialized");
+      });
 
-                var lang = SettingsService.getLanguage();
-                console.log("language: " + lang);
-                if (lang.length > 0) {
-                    console.log("Set preset language");
-                    $translate.use(lang);
-                }
-                else if (angular.isDefined(navigator.globalization)) {
-                    console.log("Use globalization plugin");
-                    navigator.globalization.getLocaleName(
-                        function (locale) {
-                            console.log('locale: ' + locale.value + '\n');
-                            lang = locale.value.split("-")[0];
-                            $translate.use(lang).then(function(data) {
-                                SettingsService.setLanguage(lang);
-                                console.log("SUCCESS -> " + data);
-                            }, function(error) {
-                                console.log("ERROR -> " + error);
-                            });
-                        },
-                        function () {
-                            console.log('Error getting locale\n');
-                        }
-                    );
+      if(typeof window.ga !== undefined) {
+        window.ga.setAnonymizeIp(true);
+        window.ga.debugMode();
+        window.ga.enableUncaughtExceptionReporting(true);
+        window.ga.startTrackerWithId('UA-92621183-1');
+        window.ga.trackView('Add');
+      } else {
+        console.log("Google Analytics Unavailable");
+      }
 
-                    console.log("End use of globalization plugin");
-                }
-                else {
-                    console.log("No globalization plugin");
-                }
+      if($window.cordova && $window.cordova.plugins.Keyboard) {
+        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+      }
 
-            });
+      if($window.StatusBar) {
+        // org.apache.cordova.statusbar required
+        StatusBar.styleDefault();
+      }
+    });
+  })
 
-            if($window.cordova && $window.cordova.plugins.Keyboard) {
-                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-            }
-
-            if($window.StatusBar) {
-                // org.apache.cordova.statusbar required
-                StatusBar.styleDefault();
-            }
-        });
-    })
-
-    .config(['$compileProvider', function ($compileProvider) {
-        // only use this in production build
-        $compileProvider.debugInfoEnabled(false);
-    }]);
+  .config(['$compileProvider', function ($compileProvider) {
+    // only use this in production build
+    $compileProvider.debugInfoEnabled(false);
+  }]);
 
 angular.module('starter.services', ['ngCordova']);
 

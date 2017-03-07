@@ -11,4 +11,12 @@ angular.module('starter.controllers').controller('SettingsController', function(
     vm.showDiarrheaChange = function (value) {
         SettingsService.setShowDiarrhea(value);
     };
+
+  $scope.$on("$ionicView.beforeEnter", function () {
+    if(typeof window.ga !== undefined) {
+      window.ga.trackView('List')
+    } else {
+      console.log("Google Analytics Unavailable");
+    }
+  });
 });

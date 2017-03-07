@@ -7,5 +7,11 @@ angular.module('starter.controllers').controller('ListDetailDayController', func
             vm.listData = ListService.getDayList($stateParams.dayId);
             //console.log(JSON.stringify($scope.listData));
         });
+
+        if(typeof window.ga !== undefined) {
+            window.ga.trackView('List_Day')
+        } else {
+            console.log("Google Analytics Unavailable");
+        }
     });
 });

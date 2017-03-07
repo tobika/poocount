@@ -7,6 +7,12 @@ angular.module('starter.controllers').controller('StatsChartsController', functi
             template: 'Loading...'
         });
 
+      if(typeof window.ga !== undefined) {
+        window.ga.trackView('Stats')
+      } else {
+        console.log("Google Analytics Unavailable");
+      }
+
         SettingsService.getShowDiarrhea().then(function(value) {
             if (value) {
                 vm.showDiarrhea = value;

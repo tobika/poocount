@@ -16,6 +16,12 @@ function ListController($scope, Database, ListService) {
         if (Database.hasChanged('listController') === true) {
             init();
         }
+
+      if(typeof window.ga !== undefined) {
+        window.ga.trackView('List')
+      } else {
+        console.log("Google Analytics Unavailable");
+      }
     });
 
     function init() {
