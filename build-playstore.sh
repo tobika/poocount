@@ -1,5 +1,5 @@
 #!/bin/bash          
-VERSION="0.3.2"
+VERSION="0.3.3"
 
 echo Preparing playstore apks for version $VERSION
 
@@ -24,17 +24,17 @@ cp platforms/android/build/outputs/apk/android-armv7-release-unsigned.apk playst
 cd playstore/$VERSION/
 cp ../tobika-release-key.keystore .
 
-echo Signing APKS
-
-apksigner sign --ks tobika-release-key.keystore poocount-x86-release-$VERSION.apk
-apksigner verify -v poocount-x86-release-$VERSION.apk
-
-apksigner sign --ks tobika-release-key.keystore poocount-armv7-release-$VERSION.apk
-apksigner verify -v poocount-armv7-release-$VERSION.apk
-
 echo Zipaligning APKs
 
 zipalign -v 4 poocount-x86-release-$VERSION.apk poocount-x86-release-$VERSION-ready.apk
 zipalign -v 4 poocount-armv7-release-$VERSION.apk poocount-armv7-release-$VERSION-ready.apk
+
+echo Signing APKS
+
+apksigner sign --ks tobika-release-key.keystore poocount-x86-release-$VERSION-ready.apk
+apksigner verify -v poocount-x86-release-$VERSION-ready.apk
+
+apksigner sign --ks tobika-release-key.keystore poocount-armv7-release-$VERSION-ready.apk
+apksigner verify -v poocount-armv7-release-$VERSION-ready.apk
 
 echo Finished

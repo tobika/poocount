@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased][unreleased]
 
+## [0.3.3] - 2017-04-16
+### Fixed
+- build process for signing, fix android > 7.0
+
 ## [0.3.2] - 2017-03-04
 ### Added
 - google analytics
