@@ -7,6 +7,14 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased][unreleased]
 
+## [0.3.2] - 2017-03-04
+### Added
+- google analytics
+### Fixed
+- import/export
+### Changed
+- updated cordova plugins
+
 ## [0.2.7] - 2015-04-07
 ### Added
 - New Lists, entries grouped by days
