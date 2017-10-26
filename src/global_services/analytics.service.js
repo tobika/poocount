@@ -7,7 +7,7 @@ function AnalyticsService() {
 
   return {
     init: function() {
-      if(typeof window.ga !== undefined) {
+      if(typeof window.ga !== 'undefined') {
         window.ga.startTrackerWithId(GA_ID, null,
           function() {
             console.log('Google Analytics initialized');
@@ -28,7 +28,7 @@ function AnalyticsService() {
     trackView: function(title) {
       // use try in case function is used before ga is initialized
       try {
-        if (typeof window.ga !== undefined) {
+        if (typeof window.ga !== 'undefined') {
           window.ga.trackView(title)
         } else {
           console.log("Google Analytics Unavailable");
@@ -40,7 +40,7 @@ function AnalyticsService() {
     trackEvent: function(category, action, label, value) {
       // use try in case function is used before ga is initialized
       try {
-        if (typeof window.ga !== undefined) {
+        if (typeof window.ga !== 'undefined') {
           window.ga.trackEvent(category, action, label, value);
         } else {
           console.log("Google Analytics Unavailable");
