@@ -19,5 +19,9 @@
       "browser": "crosswalk",
       "version": "15.44.384.9"
     }
-  ]
+  ],
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic1"
 }

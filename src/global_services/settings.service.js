@@ -41,6 +41,12 @@ function SettingsService($q) {
         setShowDiarrhea: function(newShowDiarrhea) {
             localforage.setItem('showDiarrhea', newShowDiarrhea);
             showDiarrhea = newShowDiarrhea;
+        },
+        getShowPoocount2: function () {
+            return localforage.getItem('showPoocount2');
+        },
+        setShowPoocount2: function(count) {
+            localforage.setItem('showPoocount2', count);
         }
     };
 }
