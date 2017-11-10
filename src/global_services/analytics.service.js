@@ -3,7 +3,7 @@ angular.module('starter.services').factory('AnalyticsService', AnalyticsService)
 //SettingsService.$inject=['$q'];
 
 function AnalyticsService() {
-  var GA_ID = "UA-92621183-2";
+  var GA_ID = "UA-92621183-1";
 
   return {
     init: function() {

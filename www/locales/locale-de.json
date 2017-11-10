@@ -24,5 +24,12 @@
   "settings_IMPORT": "Poocount Backupdatei auf der SD Karte. Zum Importieren klicken",
   "settings_DIARRHEATRACK": "Durchfall protokollieren",
   "settings_HELP": "Hilfe",
-  "help_TEXT": "Falls Sie irgendwelche Fragen haben zögern Sie nicht mich zu kontaktieren. Wir werden Ihnen gerne weiterhelfen."
+  "help_TEXT": "Falls Sie irgendwelche Fragen haben zögern Sie nicht mich zu kontaktieren. Wir werden Ihnen gerne weiterhelfen.",
+  "pub_TITLE": "Neues verbessertes Poocount",
+  "pub_SUBTITLE": "Mehr persönliche analyse Möglichkeiten und Statistiken",
+  "pub_TEXT1": "Ich hoffe Ihnen gefällt Poocount und es hilft Ihnen in Ihrem Alltag.",
+  "pub_TEXT2": "Die letzten 3 Jahre habe ich viel Rückmeldungen von Anwendern wie Ihnen bekommen. Diese Rückmeldungen haben mir geholfen Poocount noch nützlicher zu machen.",
+  "pub_TEXT3": "Sie können nun Ihren Stuhlgang per Bristol Stuhl Skala tracken und beliebige persönliche Parameter wie Dringlichkeit, Schmerz oder andere Symptome verfolgen. Mehr Informationen gibt es im Play Store oder schreiben Sie mir einfach eine Email.",
+  "pub_TEXT4": "Tobias, Entwickler von Poocount.",
+  "pub_CLOSE": "Schließen"
 }

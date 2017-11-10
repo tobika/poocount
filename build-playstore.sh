@@ -1,5 +1,5 @@
 #!/bin/bash          
-VERSION="0.3.3"
+VERSION="0.3.4"
 
 echo Preparing playstore apks for version $VERSION
 
@@ -9,7 +9,7 @@ echo 2. change the app id for production
 
 read -p "Press any key to validate checklist... " -n1 -s
 
-BUILD_MULTIPLE_APKS=true ionic build android --release
+BUILD_MULTIPLE_APKS=true ionic cordova build android --release
 
 read -p "Press any key to continue... " -n1 -s
 

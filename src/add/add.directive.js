@@ -25,34 +25,25 @@ function AddController($scope, Database, SettingsService, $window, AnalyticsServ
 
   vm.modal = $ionicModal.fromTemplate('<ion-modal-view>' +
     '<ion-content>' +
-    '<div class="list card">\n' +
-    '\n' +
+    '            <div class="list card">\n' +
     '                <div class="item item-avatar">\n' +
     '                    <img src="poo_smiley.png">\n' +
-    '                    <h2>New improved Poocount</h2>\n' +
-    '                    <p>More tracking possibilities/statistics</p>\n' +
+    '                    <h2>{{ \'pub_TITLE\' | translate }}</h2>\n' +
+    '                    <p>{{ \'pub_SUBTITLE\' | translate }}</p>\n' +
     '                </div>\n' +
-    '\n' +
     '                <div class="item item-body">\n' +
-    '                    <img class="full-image" src="poocountv2.png">\n' +
-    '                    <p>\n' +
-    '                        Hi, I\'m Tobias, the creator of Poocount. I hope you like Poocount and it bring some help in your everyday life. </p>\n' +
-    '                    <p>For the past 3 years I received a lot of feedback from users like yourself and decided to make Poocount even better.\n' +
-    '                    </p>\n' +
-    '                    <p>\n' +
-    '                        You can now track the Boston Stool Scale and even add your own tracking parameters like urgency/pain or other symptons that are important to your condition.\n' +
-    '\n' +
-    '                        Get more info on the play store or contact me if you have any questions.\n' +
-    '                    </p>\n' +
-    '                    <p>\n' +
-    '                        <img width="70%" ng-click="ac.openStore()" src="playstore.png">\n' +
-    '                    </p>\n' +
+    '                    <img ng-click="ac.openStore()" class="full-image" src="poocountv2.png">\n' +
+    '                    <p>{{ \'pub_TEXT1\' | translate }}</p>\n' +
+    '                    <p>{{ \'pub_TEXT2\' | translate }}</p>\n' +
+    '                    <p>{{ \'pub_TEXT3\' | translate }}</p>\n' +
+    '                    <p>{{ \'pub_TEXT4\' | translate }}</p>\n' +
+    '                    <p><img ng-click="ac.openStore()" width="70%" src="playstore.png"></p>\n' +
     '                </div>\n' +
-    '\n' +
     '<button ng-click="ac.closeModal()" class="button padding button-block button-outline button-positive">' +
-    'Close' +
+    '{{ \'pub_CLOSE\' | translate }}' +
     '</button>' +
-    '</div></ion-modal-view>', {
+    '            </div>' +
+    '</ion-modal-view>', {
     scope: $scope,
     animation: 'slide-in-up'
   });
@@ -92,12 +83,14 @@ function AddController($scope, Database, SettingsService, $window, AnalyticsServ
 
         if (result === 10) {
           vm.modal.show();
+          AnalyticsService.trackEvent('pub', 'show');
         }
       });
   });
 
   vm.openStore = function() {
-    $window.open('https://play.google.com/store/apps/details?id=com.tobik.poocountv2&referrer=utm_source%3Dliteapp%26utm_medium%3Dapp', '_system')
+    $window.open('https://play.google.com/store/apps/details?id=com.tobik.poocountv2&referrer=utm_source%3Dliteapp%26utm_medium%3Dapp', '_system');
+    AnalyticsService.trackEvent('pub', 'click');
   };
 
     vm.add = function () {

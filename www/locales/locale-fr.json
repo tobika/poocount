@@ -24,5 +24,12 @@
   "settings_IMPORT": "Poocount fichier backup sur la carte SD. Cliquer pour importer",
   "settings_DIARRHEATRACK": "Journaliser votre diarrhée",
   "settings_HELP": "Aide",
-  "help_TEXT": "N'hésitez pas à nous contacter en cas de besoin. Nous serons ravis de vous répondre"
+  "help_TEXT": "N'hésitez pas à nous contacter en cas de besoin. Nous serons ravis de vous répondre",
+  "pub_TITLE": "Une nouvelle version de Poocount est maintenant disponible",
+  "pub_SUBTITLE": "Avec de nouvelles fonctionnalités de tracking et statistiques",
+  "pub_TEXT1": "J’espère que l'application Poocount vous plaît et vous apportes de l'aide au quotidien.",
+  "pub_TEXT2": "Depuis 3 ans j'ai eu beaucoup de retours d'utilisateurs comme vous. Ces retours m'ont permis de pousser encore plus loin le service rendus par Poocount.",
+  "pub_TEXT3": "Vous pouvez maintenant effectuer votre suivis à l'aide de l'échelle de Bristol et ajouter des paramètres personnalisés comme \"urgence\", \"douleur\" ou tout autres symptômes de votre choix. Pour plus d'informations, rendez-vous sur le Play store ou n'hésitez pas à me contacter par email. ",
+  "pub_TEXT4": "Tobias, développeur de Poocount.",
+  "pub_CLOSE": "Fermer"
 }

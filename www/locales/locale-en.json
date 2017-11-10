@@ -24,5 +24,12 @@
   "settings_IMPORT": "Poocount backups on the sdcard. Click to import",
   "settings_DIARRHEATRACK": "Track Diarrhea",
   "settings_HELP": "Help",
-  "help_TEXT": "If you have any questions don't hesitate to contact me. We'll gladly help you."
+  "help_TEXT": "If you have any questions don't hesitate to contact me. We'll gladly help you.",
+  "pub_TITLE": "New improved Poocount",
+  "pub_SUBTITLE": "More tracking possibilities/statistics",
+  "pub_TEXT1": "I hope you like Poocount and it bring some help in your everyday life.",
+  "pub_TEXT2": "For the past 3 years I received a lot of feedback from users like yourself. This helped me to make Poocount even better.",
+  "pub_TEXT3": "You can now track the Bristol Stool Scale and even add your own tracking parameters like urgency/pain or other symptons that are important to your condition. Get more info on the play store or contact me if you have any questions.",
+  "pub_TEXT4": "Tobias, creator of Poocount.",
+  "pub_CLOSE": "Close"
 }
